@@ -117,7 +117,7 @@ int		ft_width(char *arg, va_list *av, t_parsing *parsing)
 }
 
 int		ft_precision(char *arg, va_list *av, t_parsing *parsing)
-{
+{ //printf(" ft_precision with P == [%d]\n", parsing->prec);
 	int i;
 
 	i = 0;

@@ -29,7 +29,7 @@ void	ft_flags_aff2(char *arg, t_parsing *parsing)
 }
 
 void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
-{ //printf("\naff is [%s]\n", parsing->aff);
+{ //printf("\nflags_aff3, aff is [%s]\n", parsing->aff);
 	if (parsing->prec > parsing->width || parsing->prec == -1)
 	{
 		if (*arg == '%')
@@ -50,7 +50,7 @@ void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
 void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
 {
 	char *tmp;
-//printf(">>>into flags_aff\n");
+//printf("\n>>>into flags_aff, your aff is [%s]\n", parsing->aff);
 	c = ' ';
 	tmp = ft_strdup(parsing->aff);
 	ft_flags_aff_prepa(arg, parsing, c);
@@ -63,7 +63,7 @@ void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
 	else if (*arg == 'p' && parsing->neg != 1)
 		ft_pointers_deal(arg, parsing);
 	else
-	{
+	{ //printf("else of flags_aff\n");
 		if (parsing->zero == 1 && parsing->prec != -1 && parsing->aff != NULL)
 			ft_flags_aff2(arg, parsing);
 		else

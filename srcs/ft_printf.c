@@ -48,6 +48,7 @@ void		ft_format_type(char type, va_list *av, t_parsing *parsing)
 	else if (type == 'p')
 		parsing->aff = ft_putnbr_base_ulong(va_arg(*av, unsigned long),
 				"0123456789abcdef");
+//printf("\nEND FORMAT_TYPE WITH [%s]\n", parsing->aff);
 }
 
 int			ft_arg_count(char *arg, va_list *av, t_parsing *parsing)
@@ -85,10 +86,10 @@ int			ft_loop(char *arg, va_list *av, t_parsing parsing, int len)
 			if (parsing.aff)
 				len += ft_putstr_fd(parsing.aff, 1);
 			if (parsing.cnull == 0)
-				ft_putchar_fd(parsing.cnull, 1);
+					ft_putchar_fd(parsing.cnull, 1);
 		}
 		if (!parsing.aff && *arg && *arg != '%')
-		{
+		{ //printf("\ngonna print *arg [%c]\n", *arg);
 			ft_putchar_fd(*arg, 1);
 			len++;
 			arg++;
@@ -115,7 +116,7 @@ int			ft_printf(const char *format, ...)
 	va_start(av, format);
 	arg = (char *)format;
 	count = ft_loop(arg, &av, parsing, len);
-	//printf("ft_ret = [%d]\n", count);
+	printf("ft_ret = [%d]\n", count);
 	va_end(av);
 	return (count);
 }

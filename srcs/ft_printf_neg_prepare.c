@@ -64,6 +64,9 @@ void	ft_neg_prepare(char *arg, t_parsing *parsing)
 	int aff_count;
 //printf("arg_pos here is [%d]\n", parsing->arg_pos);
 	aff_count = 0;
+	if (*arg == 'u' || *arg == 'x' || *arg == 'X')
+	 if (*parsing->aff == '0' && parsing->width == 0 && parsing->prec != -1)
+	 		parsing->arg_count += 1;
 	if (*arg == 'p' || *arg == 'u')
 		ft_neg_prepare2(arg, parsing);
 	else if (*arg != 'u' && *arg != 's' && *arg != 'c')

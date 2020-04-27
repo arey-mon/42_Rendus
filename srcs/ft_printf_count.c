@@ -13,6 +13,8 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+// count of x || X when P < 0
+
 int		ft_get_count(char *arg, t_parsing *parsing, int flags)
 {
 	flags = 0;

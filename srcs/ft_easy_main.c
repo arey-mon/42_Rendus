@@ -39,31 +39,58 @@ ft_printf("%-.5x%s%4u%-ctyziQRyVc27\n", 0, "ooI47zd3X", 2147483647, '\0');
 */
 
 printf("[TEST]\n");
-// printf("pr_ret = [%d]\n", printf("F5%.*X%-9x", 8, 0, 0));
-// ft_printf("F5%.*X%-9x", 8, 0, 0);
 
-printf("C6i%%E%xxFadHR35Cwvy\n", 0);
-ft_printf("C6i%%E%xxFadHR35Cwvy\n", 0);
 
-/* THIS IS NOT RIGHT
+printf("pr_ret = [%d]\n",printf("rsqEsTx%-14u%-uA1z%-2.5ssZ80VX%%", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x"));
+ft_printf("rsqEsTx%-14u%-uA1z%-2.5ssZ80VX%%", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x");
 
-// printf("_______ TEST 14 _______\n");
-// printf("pr_ret = [%d]\n",printf("pr_%0d%.*x%016iBGW7gVOJpB%010.*uCSE%-17XNd\n", -522937812, -1, 0, -1242796097, -1, 2147483647, 0));
-// ft_printf("ft_%0d%.*x%016iBGW7gVOJpB%010.*uCSE%-17XNd\n", -522937812, -1, 0, -1242796097, -1, 2147483647, 0);
-// printf("\n");
 
-// printf("_______ TEST 14 -- CUTTED _______\n");
-// printf("pr_ret = [%d]\n",printf("pr_%0d%.*x%016iBGW7gVOJpB%010.*uCSE%-17XNd\n", -522937812, -1, 0, -1242796097, -1, 2147483647, 0));
-// ft_printf("ft_%0d%.*x%016iBGW7gVOJpB%010.*uCSE%-17XNd\n", -522937812, -1, 0, -1242796097, -1, 2147483647, 0);
-// printf("\n");
 
-// printf("_______ TEST 14 -- CUTTED _______\n");
-// printf("pr_ret = [%d]\n",printf("pr_%0d%.*x\n", 56, -1, 0));
-// ft_printf("ft_%0d%.*x\n", 56, -1, 0);
-//
-// printf("pr_ret = [%d]\n",printf("pr_%0d %.*d\n", 56, -1, 0));
-// ft_printf("ft_%0d %.*d\n", 56, -1, 0);
+
+/* IS OK FROM DESTRUCTOR
+printf("pr_ret = [%d]\n",printf("PKk4Oe1sLd%%%18.5XGjN%17c%-.*u", 2147483647, 'K', 5, 0));
+ft_printf("PKk4Oe1sLd%%%18.5XGjN%17c%-.*u", 2147483647, 'K', 5, 0);
+
+printf("pr_ret = [%d]\n",printf("KszFYW6Ve%0.*d%-x%16c%*d", 3, -2147483647, 0, '\0', 9, 2147483647));
+ft_printf("KszFYW6Ve%0.*d%-x%16c%*d", 3, -2147483647, 0, '\0', 9, 2147483647);
+
+printf("pr_ret = [%d]\n",printf("LFS%*cJ0bs96 W%0*X4JB%-.0si", -6, 'j', -8, 0, ""));
+ft_printf("LFS%*cJ0bs96 W%0*X4JB%-.0si", -6, 'j', -8, 0, "");
+printf("pr_ret = [%d]\n",printf("T3HHRX3D8owUjjy3xd%u", 0));
+ft_printf("T3HHRX3D8owUjjy3xd%u", 0);
+printf("pr_ret = [%d]\n",printf("%%Vp6%-8X%%I8udRp", 0));
+ft_printf("%%Vp6%-8X%%I8udRp", 0);
+printf("pr_ret = [%d]\n",printf("%0*X%%z8%0.1iZJ6%14uI9", 8, -2147483647, 2147483647, 0));
+ft_printf("%0*X%%z8%0.1iZJ6%14uI9", 8, -2147483647, 2147483647, 0);
+printf("pr_ret = [%d]\n",printf("%0*X%%z8%0.1iZJ6%14uI9", 8, -2147483647, 2147483647, 0));
+ft_printf("%0*X%%z8%0.1iZJ6%14uI9", 8, -2147483647, 2147483647, 0);
+
+printf("pr_ret = [%d]\n",printf("15RNpe4jQ66D%%b%-X%-.*s%-.2u", 0, 9, "D5 LfhRsAfc5UMwjDzYi2D8NXLcl EwJtuwrsE25mvAPVXKuYDTLJiutxMhuLTXbRoFE6zL9jldGo", 2147483647));
+ft_printf("15RNpe4jQ66D%%b%-X%-.*s%-.2u", 0, 9, "D5 LfhRsAfc5UMwjDzYi2D8NXLcl EwJtuwrsE25mvAPVXKuYDTLJiutxMhuLTXbRoFE6zL9jldGo", 2147483647);
+
+printf("pr_ret = [%d]\n",printf("BE %xEWCCI%-*s%xfI4nE3ntG", 0, 3, "", 0));
+ft_printf("BE %xEWCCI%-*s%xfI4nE3ntG", 0, 3, "", 0);
 */
+
+
+/* TO BE TESTED
+printf("pr_ret = [%d]\n",printf("%2c%0xL%0*.*uckfUhOPS0MRFwzTJ", 'U', -2147483647, 7, 10, 0));
+printf("pr_ret = [%d]\n",printf("jWDdJY2X%1.1xbZ5kc%-*.4iBVOp mp%*.0X", 1701813699, -8, -2147483647, 9, 0));
+printf("pr_ret = [%d]\n",printf("%-s9E%.2i5Uhok%-.*xx1%2.5d%-2ikzny", "DcKazu48rXF1T8M2ftP4VwlijJUZ CBNlhnTuhMYIKjsBXLq3W3AJgNy1Q6Nu51Pi8ItXkWrBks", 2147483647, 10, 2147483647, 0, 1832762735));
+printf("pr_ret = [%d]\n",printf("%0.3XyQqR6 S%-18.5X%0X%-4.3s", 0, 2147483647, 2147483647, ""));
+printf("pr_ret = [%d]\n",printf("7jj7beRIHou9tw5N3h AA%x%i", 0, 2147483647));
+printf("pr_ret = [%d]\n",printf("%020iq%0xhOOLh6n2 H6 K", 2147483647, 0));
+printf("pr_ret = [%d]\n",printf("%4.1urUM9%-.3ucYbzBGSPZ%-.*xj%cTn", 2147483647, 1712379655, -2, 0, '0'));
+printf("pr_ret = [%d]\n",printf("FN%-cm%-*.5x%-15.0i%csHFYKa", '\0', -8, -1988966657, 1545830339, '\0'));
+printf("pr_ret = [%d]\n",printf("tRy lF%0XSb%c%-.3sn2Te9%-.0i", 0, '\0', "lWmSPKcQlU7syhVBJTLtnoz6bHO3JXMgWHpFOUKDEXMWwW5He4z2", -2147483647));
+printf("pr_ret = [%d]\n",printf("%-13.*i%0u8pg%-da%%P7%12doXVac", 0, -2146227665, 0, 2147483647, 0));
+printf("pr_ret = [%d]\n",printf("9Sk0F%xxuH%-15uypU%-c", 2147483647, 0, '\0'));
+printf("pr_ret = [%d]\n",printf("6HP%13XnTo0DwHBT%.*x%%%%e", 2147483647, 4, 0));
+printf("pr_ret = [%d]\n",printf("js05c%6X%3cLdABs", 0, 'Y'));
+printf("pr_ret = [%d]\n", printf(" HlX%sN79HFbhL%02u%15s", "FKLYaGp02ST gJoZCKyusvyRtAmkU8adCcVEnso4SOKo9u1Bg6Qug6M7MmnwlSn7c9YQ2sNKLylUz0VlwgGcubcHmIaes99yTch", 0, "wHMjwkEb8ZiwpED0C3tiEWU7WcmaoBjQv8ilh9jGrRMMf2WUL"));
+*/
+
+
 
 /* TESTED FINE FROM DESTRUCTOR
 // printf("_______ TEST 1 _______\n");
@@ -131,6 +158,10 @@ printf("\n");
 // ft_printf("ft_%-i%0.2XQupEyBVr1RzgZ1ZxRqVs\n", 0, 0);
 // printf("\n");
 
+printf("_______ TEST 14 _______\n");
+printf("pr_ret = [%d]\n",printf("pr_%0d %.*d\n", 56, -1, 0));
+ft_printf("ft_%0d %.*d\n", 56, -1, 0);
+
 printf("_______ TEST 15 -- check ret _______\n");
 printf("pr_ret = [%d]\n",printf("pr_%4d%0Xrhkx2VDu68iG%-12s%s %-c\n", 2048193663, 2147483647, NULL, "OTYGO02P gwvKn14CKGQqlyZyW2Cl5nmFxBGpN7GXIimT mKUthX", 'Y'));
 ft_printf("ft_%4d%0Xrhkx2VDu68iG%-12s%s %-c\n", 2048193663, 2147483647, NULL, "OTYGO02P gwvKn14CKGQqlyZyW2Cl5nmFxBGpN7GXIimT mKUthX", 'Y');
@@ -170,6 +201,31 @@ printf("\n");
 // printf("_______ TEST 21 -- CUTTED _______\n");
 // printf("pr_ret = [%d]\n", printf("pr_%.5d\n", 0));
 // ft_printf("ft_%.5d\n", 0);
+
+// printf("pr_ret = [%d]\n", printf("F5%.*X%-9x", 8, 0, 0));
+// ft_printf("F5%.*X%-9x", 8, 0, 0);
+//
+// // printf("pr_ret = [%d]\n", printf("C6i%%E%xxFadHR35Cwvy\n", 0));
+// // ft_printf("C6i%%E%xxFadHR35Cwvy\n", 0);
+
+// printf("pr_ret = [%d]\n", printf("5EgQX%-.2d%.4d%5d%%%02.2u%%M", -940080534, 1297237183, 1777747364, 0));
+// ft_printf("5EgQX%-.2d%.4d%5d%%%02.2u%%M", -940080534, 1297237183, 1777747364, 0);
+// printf("pr_ret = [%d]\n",printf("%-u%-.4x2jevQ%-.1igQJ2C", 0, 510500194, 2147483647));
+// ft_printf("%-u%-.4x2jevQ%-.1igQJ2C", 0, 510500194, 2147483647);
+// printf("pr_ret = [%d]\n",printf(" lHJe5ClYg%03.5x%-14.*uhFoQ%0.1i", -1272534814, 9, 0, 2147483647));
+// ft_printf(" lHJe5ClYg%03.5x%-14.*uhFoQ%0.1i", -1272534814, 9, 0, 2147483647);
+// printf("pr_ret = [%d]\n",printf("%-.0s%019.*x%*.2sn%0uAxJc%.1uywahkgiVHX", "", -3, 2147483647, 9, "", 901948135, 0));
+// ft_printf("%-.0s%019.*x%*.2sn%0uAxJc%.1uywahkgiVHX", "", -3, 2147483647, 9, "", 901948135, 0);
+// printf("pr_ret = [%d]\n",printf("%08uK%6.2iKVbs%-.2i%.*u%16.5s", 0, 0, 1067034831, 2, 2147483647, ""));
+// ft_printf("%08uK%6.2iKVbs%-.2i%.*u%16.5s", 0, 0, 1067034831, 2, 2147483647, "");
+// printf("pr_ret = [%d]\n",printf("%-13.3x%-x0%c7i%-12sPUTQntF7L", -2147483647, 0, '\0', ""));
+// ft_printf("%-13.3x%-x0%c7i%-12sPUTQntF7L", -2147483647, 0, '\0', "");
+printf("pr_ret = [%d]\n",printf("15RNpe4jQ66D%%b%-X%-.*s%-.2u", 0, 9, "D5 LfhRsAfc5UMwjDzYi2D8NXLcl EwJtuwrsE25mvAPVXKuYDTLJiutxMhuLTXbRoFE6zL9jldGo", 2147483647));
+ft_printf("15RNpe4jQ66D%%b%-X%-.*s%-.2u", 0, 9, "D5 LfhRsAfc5UMwjDzYi2D8NXLcl EwJtuwrsE25mvAPVXKuYDTLJiutxMhuLTXbRoFE6zL9jldGo", 2147483647);
+
+printf("pr_ret = [%d]\n",printf("PS%-.0d%08u%05d%clupPoD%07.3x%-16X", 0, 0, 930075297, '\0', 0, 2147483647));
+ft_printf("PS%-.0d%08u%05d%clupPoD%07.3x%-16X", 0, 0, 930075297, '\0', 0, 2147483647);
+
 */
 
 
