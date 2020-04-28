@@ -29,44 +29,59 @@ void	ft_neg_value_w(t_parsing *parsing)
 	if ((parsing->zero == 1 && parsing->prec != -1) || (parsing->zero != 1 &&
 		parsing->width > ft_strlen(parsing->aff)))
 		while (parsing->space_flags-- > 0)
+		{
 			ft_putchar_fd(' ', 1);
+			parsing->arg_count++;
+		}
 	if (*parsing->aff == '0')
-		ft_putchar_fd('-', 1);
-	if (parsing->zero == 1 && parsing->prec > ft_strlen(parsing->aff))
 	{
-		parsing->zero_flags += 1;
-		parsing->arg_count -= 1;
+		ft_putchar_fd('-', 1);
+		parsing->arg_count++;
 	}
+	if (parsing->zero == 1 && parsing->prec > ft_strlen(parsing->aff))
+		parsing->zero_flags += 1;
 	while ((parsing->zero_flags-- - 1) > 0)
+	{
 		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
 }
 
 void	ft_neg_value_p(char *arg, t_parsing *parsing)
 { //printf("entered neg_value_p\n");
 	if (*arg != 'u')
+	{
 		ft_putchar_fd('-', 1);
+		parsing->arg_count++;
+	}
 	while (parsing->zero_flags-- > 0)
+	{
 		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
 	if (parsing->width > ft_strlen(parsing->aff) && parsing->prec >
 	ft_strlen(parsing->aff))
 		parsing->space_flags = (parsing->width - parsing->prec - 1);
 	while (parsing->space_flags-- > 0)
+	{
 		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
 	if (parsing->width != 0)
 		parsing->zero_flags += 1;
 	while (parsing->zero_flags-- > 0)
+	{
 		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
 }
 
 void	ft_neg_value(char *arg, t_parsing *parsing)
 {
 	int size;
-	// printf(">>>into neg_value - arg_pos is [%d]\n", parsing->arg_pos);
-	// printf(">>>>count is [%d]\n", parsing->arg_count);
 	(void)*arg;
 	size = parsing->prec >= parsing->width ? parsing->prec : parsing->width;
 	ft_neg_prepare(arg, parsing);
-	//printf(">>>>count2 is [%d] - arg_pos is [%d]\n", parsing->arg_count, parsing->arg_pos);
 	if (parsing->prec < size && parsing->prec == ft_strlen(parsing->aff))
 		parsing->space_flags += 1;
 	if (ft_strlen(parsing->aff) >= size)
@@ -100,14 +115,18 @@ void	ft_double_neg(char *arg, t_parsing *parsing)
 			ft_putchar_fd('-', 1);
 		if (parsing->width != 0)
 		parsing->arg_count += 1;
-		// if ((*arg == 'i' && parsing->width == 0) || (ft_strlen(parsing->aff) == parsing->prec))
-		// 	parsing->arg_count -= 1;
 	}
 	while (parsing->zero_flags-- > 0)
+	{
 		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
 	ft_putstr_fd(parsing->aff, 1);
 	while (parsing->space_flags-- > 0)
+	{
 		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
 	parsing->arg_count += ft_strlen(parsing->aff);
 	parsing->aff = NULL;
 	//printf(">>>>out of double_neg, count is [%d]\n", parsing->arg_count);

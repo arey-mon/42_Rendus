@@ -11,8 +11,8 @@
 
 int main (void)
 {
-  // int d = -1;
-//   int *p = &d;
+  int d = -1;
+  int *p = &d;
    //char c = c;
    // char *pp = &c;
    //char a;
@@ -20,6 +20,54 @@ int main (void)
   // int X = 0x98;
   //char *s = "1";
   //char *s = "quinze_characts";
+
+printf("COUNT ERRORS WITH P\n");
+  // printf("pr_ret = [%d]\n",printf("%20.p", NULL));
+  // ft_printf("%20.p", NULL);
+  // printf("pr_ret = [%d]\n",printf("%2.p", NULL));
+  // ft_printf("%2.p", NULL);
+  // printf("pr_ret = [%d]\n",printf("%5.p", NULL));
+  // ft_printf("%5.p", NULL);
+  // printf("pr_ret = [%d]\n",printf("%.0p", 0));
+  // ft_printf("%.0p", 0);
+  // printf("pr_ret = [%d]\n",printf("%-60p", p));
+  // ft_printf("%-60p", p);
+
+//with types x X d i u if neg == 1 arg_pos == 1 W==0 P>aff
+// arg_count has to be +1
+  printf("pr_ret = [%d]\n",printf("%-.12i", 20000000));
+  ft_printf("%-.12i", 20000000);
+  printf("pr_ret = [%d]\n",printf("%-.12u", 20000000));
+  ft_printf("%-.12u", 20000000);
+  printf("pr_ret = [%d]\n",printf("%-.12i", -20000000));
+  ft_printf("%-.12i", -20000000);
+  printf("pr_ret = [%d]\n",printf("%-.12u", -20000000));
+  ft_printf("%-.12u", -20000000);
+  printf("pr_ret = [%d]\n",printf("%-.12d", 20000000));
+  ft_printf("%-.12d", 20000000);
+  printf("\nsome other testing\n");
+  printf("pr_ret = [%d]\n",printf("%-.12i", 2000));
+  ft_printf("%-.12i", 2000);
+  printf("pr_ret = [%d]\n",printf("%-1.12i", 2000));
+  ft_printf("%-1.12i", 2000);
+  printf("pr_ret = [%d]\n",printf("%-.12x", 2000));
+  ft_printf("%-.12x", 2000);
+  printf("pr_ret = [%d]\n",printf("%-.12X", 2000));
+  ft_printf("%-.12X", 2000);
+  printf("pr_ret = [%d]\n",printf("%.12i", 2000));
+  ft_printf("%.12i", 2000);
+  printf("pr_ret = [%d]\n",printf("%.5i", 200000));
+  ft_printf("%.5i", 200000);
+  printf("pr_ret = [%d]\n",printf("%.6i", -3));
+  ft_printf("%.6i", -3);
+  printf("pr_ret = [%d]\n",printf("%.6d", -3));
+  ft_printf("%.6d", -3);
+  printf("pr_ret = [%d]\n",printf("%.20x", -3));
+  ft_printf("%.20x", -3);
+  printf("pr_ret = [%d]\n",printf("%.20X", -3));
+  ft_printf("%.20X", -3);
+  printf("pr_ret = [%d]\n",printf("%.6u", -3));
+  ft_printf("%.6u", -3);
 
 /*
 printf("COUNT SHOULD BE [TEST 2 : 89] [TEST 3 : 51] [TEST 4 : 49] [TEST 5 : 145] [TEST 6 : 108] [TEST 7 : 26] [TEST 8 : 20] [TEST 9 : 44] [TEST 10 : 36] [TEST 11 : 19]   -- \n");
@@ -38,16 +86,47 @@ ft_printf("%8.3i%15X%014X%-2xqLO\n", 2147483647, 1733619810, 0, 0);
 ft_printf("%-.5x%s%4u%-ctyziQRyVc27\n", 0, "ooI47zd3X", 2147483647, '\0');
 */
 
-printf("[TEST]\n");
+//printf("[TEST]\n");
+
+// printf("pr_ret = [%d]\n", printf("%10.5i\n", -216));
+// ft_printf("%10.5i\n", -216);
+// printf("pr_ret = [%d]\n", printf("%10.5d\n", -216));
+// ft_printf("%10.5d\n", -216);
+// printf("pr_ret = [%d]\n", printf("%3.7i\n", -1234));
+// ft_printf("%3.7i\n", -1234);
+// printf("pr_ret = [%d]\n", printf("%3.7d\n", -1234));
+// ft_printf("%3.7d\n", -1234);
+// printf("pr_ret = [%d]\n", printf("%6.7d\n", -1234));
+// ft_printf("%6.7d\n", -1234);
+// printf("pr_ret = [%d]\n", printf("%-10.5i\n", -216));
+// ft_printf("%-10.5i\n", -216);
+// printf("pr_ret = [%d]\n", printf("%-10.5i\n", 216));
+// ft_printf("%-10.5i\n", 216);
+// printf("pr_ret = [%d]\n", printf("%10.5i\n", -216));
+// ft_printf("%10.5i\n", -216);
+// printf("pr_ret = [%d]\n", printf("%010.5i\n", -216));
+// ft_printf("%010.5i\n", -216);
+// printf("pr_ret = [%d]\n", printf("%010.5i\n", -216));
+// ft_printf("%010.5i\n", -216);
+// printf("pr_ret = [%d]\n", printf("%010.5d\n", -216));
+// ft_printf("%010.5d\n", -216);
+// printf("pr_ret = [%d]\n", printf("%c\n", '\0'));
+// ft_printf("%c\n", '\0');
+// printf("pr_ret = [%d]\n", printf("%5c\n", '\0'));
+// ft_printf("%5c\n", '\0');
+// printf("pr_ret = [%d]\n", printf("%c\n", 0));
+// ft_printf("%c\n", 0);
+// printf("pr_ret = [%d]\n", printf("%c\n", -0));
+// ft_printf("%c\n", -0);
 
 
-printf("pr_ret = [%d]\n",printf("rsqEsTx%-14u%-uA1z%-2.5ssZ80VX%%", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x"));
-ft_printf("rsqEsTx%-14u%-uA1z%-2.5ssZ80VX%%", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x");
-
-
-
+// printf("pr_ret = [%d]\n",printf("%-14u%-2.5s", 2147483647,  "ABCDEFGH"));
+// ft_printf("%-14u%-2.5s", 2147483647, "ABCDEFGH");
 
 /* IS OK FROM DESTRUCTOR
+printf("pr_ret = [%d]\n",printf("rsqEsTx%-14u%-uA1z%-2.5s", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x"));
+ft_printf("rsqEsTx%-14u%-uA1z%-2.5s", 2147483647, 0, "jR0vFEeSMDWQKvv6FF5HSfh7UojqL66E4P5k0x");
+
 printf("pr_ret = [%d]\n",printf("PKk4Oe1sLd%%%18.5XGjN%17c%-.*u", 2147483647, 'K', 5, 0));
 ft_printf("PKk4Oe1sLd%%%18.5XGjN%17c%-.*u", 2147483647, 'K', 5, 0);
 

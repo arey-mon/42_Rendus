@@ -14,10 +14,13 @@
 #include <stdio.h>
 
 void	ft_pointers_deal(char *arg, t_parsing *parsing)
-{
+{ //printf("___ POINTERS_DEAL ___\n");
 	(void)*arg;
 	if (parsing->aff == NULL)
+	{
 		parsing->aff = ft_strdup("0x");
+		parsing->arg_count += 1;
+	}
 	else if (parsing->prec < ft_strlen(parsing->aff))
 		parsing->aff = ft_strjoin(ft_strdup("0x"), parsing->aff);
 	while (parsing->space_flags-- > 0)
@@ -37,4 +40,5 @@ void	ft_pointers_deal(char *arg, t_parsing *parsing)
 		parsing->arg_count += ft_strlen(parsing->aff) + 2;
 		parsing->aff = NULL;
 	}
+	//ft_get_count_p(parsing);
 }

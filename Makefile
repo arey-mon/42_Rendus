@@ -7,7 +7,6 @@ SRC =		ft_printf.c \
 			ft_printf_checks.c \
 			ft_printf_flags.c \
 			ft_printf_flags_aff.c \
-			ft_printf_count.c \
 			ft_printf_neg.c \
 			ft_printf_neg_prepare.c \
 			ft_printf_p.c \

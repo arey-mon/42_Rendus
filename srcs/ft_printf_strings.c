@@ -42,7 +42,10 @@ void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
 	tmp = ft_strdup(parsing->aff);
 	(void)*arg;
 	while (parsing->width-- - parsing->prec > 0 && parsing->neg != 1)
+	{
 		write(1, &c, 1);
+		parsing->arg_count++;
+	}
 	while (parsing->prec-- > 0)
 	{
 		ft_putchar_fd(tmp[i++], 1);
@@ -50,9 +53,15 @@ void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
 	}
 	parsing->width -= i;
 	while (parsing->width-- - parsing->prec > 0 && parsing->neg == 1)
+	{
 		write(1, &c, 1);
+		parsing->arg_count++;
+	}
 	while (parsing->prec-- - ft_strlen(tmp) > 0)
+	{
 		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
 	parsing->aff = NULL;
 }
 
@@ -69,13 +78,19 @@ void	ft_string_precision(char *arg, t_parsing *parsing, char c)
 	else if (ft_strlen(tmp) <= parsing->prec)
 	{
 		while (parsing->neg != 1 && parsing->width-- - ft_strlen(tmp) > 0)
+		{
 			write(1, &c, 1);
+			parsing->arg_count++;
+		}
 		if (parsing->neg == 1)
 		{
 			ft_putstr_fd(tmp, 1);
 			while (parsing->width-- - ft_strlen(tmp) > 0)
+			{
 				write(1, &c, 1);
-			parsing->arg_count += ft_strlen(parsing->aff);
+				parsing->arg_count++;
+			}
+			parsing->arg_count += ft_strlen(parsing->aff); // + parsing->width ??
 			parsing->aff = NULL;
 		}
 	}
@@ -86,13 +101,19 @@ void	ft_string_exceptions(char *arg, t_parsing *parsing, char c, char *tmp)
 	tmp = ft_strdup(parsing->aff);
 	if (parsing->prec == 0 && *arg == 's')
 		while (parsing->width--)
+		{
 			write(1, &c, 1);
+			parsing->arg_count++;
+		}
 	if (parsing->prec == 0 && *arg == 'c')
 	{
 		if (parsing->neg != 1)
 		{
 			while (parsing->space_flags-- > 0)
+			{
 				write(1, &c, 1);
+				parsing->arg_count++;
+			}
 			ft_putchar_fd(*tmp, 1);
 			parsing->arg_count += 1;
 		}
@@ -101,7 +122,10 @@ void	ft_string_exceptions(char *arg, t_parsing *parsing, char c, char *tmp)
 			ft_putchar_fd(*tmp, 1);
 			parsing->arg_count += 1;
 			while (parsing->space_flags-- > 0)
+			{
 				write(1, &c, 1);
+				parsing->arg_count++;
+			}
 		}
 		parsing->aff = NULL;
 	}

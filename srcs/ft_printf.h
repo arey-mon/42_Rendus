@@ -41,11 +41,6 @@ char				*ft_strdup(const char *s1);
 char				*ft_aff_c(int d);
 char				*ft_aff_c(int d);
 int					ft_printf(const char *format, ...);
-int					ft_get_count(char *arg, t_parsing *parsing, int flags_size);
-int					ft_get_count2(char *arg, t_parsing *parsing,
-		int flags_size);
-void				ft_get_count3(char *arg, t_parsing *parsing,
-		int flags_size);
 int					ft_loop(char *arg, va_list *av, t_parsing parsing, int len);
 int					ft_is_printf_format(const char *format);
 void				ft_init_parsing(t_parsing *parsing);

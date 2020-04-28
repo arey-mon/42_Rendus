@@ -22,10 +22,16 @@ void	ft_flags_aff2(char *arg, t_parsing *parsing)
 	space = parsing->prec > ft_strlen(parsing->aff) ? parsing->width -
 	parsing->prec : parsing->width - ft_strlen(parsing->aff);
 	while (space-- > 0)
+	{
 		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
 	if (parsing->prec > parsing->width)
 		while (parsing->zero_flags-- > 0)
+		{
 			ft_putchar_fd('0', 1);
+			parsing->arg_count++;
+		}
 }
 
 void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
@@ -37,14 +43,23 @@ void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
 			if (parsing->zero == 1)
 				c = '0';
 			while (parsing->width-- - ft_strlen(tmp) > 0)
+			{
 				write(1, &c, 1);
+				parsing->arg_count++;
+			}
 		}
 		else
 			while (parsing->zero_flags-- > 0)
+			{
 				ft_putchar_fd('0', 1);
+				parsing->arg_count++;
+			}
 	}
 	while (*arg != '%' && parsing->zero != 1 && parsing->space_flags-- > 0)
+	{
 		write(1, &c, 1);
+		parsing->arg_count++;
+	}
 }
 
 void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
@@ -70,7 +85,10 @@ void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
 			ft_flags_aff3(arg, parsing, c, tmp);
 		if (parsing->prec <= parsing->width && parsing->prec != -1)
 			while (parsing->zero_flags-- > 0)
+			{
 				ft_putchar_fd('0', 1);
+				parsing->arg_count++;
+			}
 	}
 	//printf(">>>>out of flags_aff, count is [%d]\n", parsing->arg_count);
 }

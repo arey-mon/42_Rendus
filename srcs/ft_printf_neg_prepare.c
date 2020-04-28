@@ -40,9 +40,8 @@ void	ft_neg_prepare3(t_parsing *parsing, int aff_count)
 		*parsing->aff = parsing->prec > aff_count ? '0' : *parsing->aff;
 		if (parsing->prec > aff_count && parsing->width >
 			parsing->prec && parsing->neg == 0 && parsing->zero == 0)
-			parsing->zero_flags += 1;
-		if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero ==
-				1)
+				parsing->zero_flags += 1;
+		if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero == 1)
 			parsing->space_flags = parsing->width - ft_strlen(parsing->aff);
 	}
 	else
@@ -60,20 +59,22 @@ void	ft_neg_prepare3(t_parsing *parsing, int aff_count)
 }
 
 void	ft_neg_prepare(char *arg, t_parsing *parsing)
-{
+{ //printf("what's neg for you ? [%d]\n", parsing->neg);
 	int aff_count;
-//printf("arg_pos here is [%d]\n", parsing->arg_pos);
+
 	aff_count = 0;
-	if (*arg == 'u' || *arg == 'x' || *arg == 'X')
-	 if (*parsing->aff == '0' && parsing->width == 0 && parsing->prec != -1)
-	 		parsing->arg_count += 1;
 	if (*arg == 'p' || *arg == 'u')
 		ft_neg_prepare2(arg, parsing);
 	else if (*arg != 'u' && *arg != 's' && *arg != 'c')
-	{
 		ft_neg_prepare3(parsing, aff_count);
-		if (parsing->prec >= ft_strlen(parsing->aff) && (parsing->zero == 1 ||
-			parsing->width == 0) && parsing->arg_pos != 1)
+	if (parsing->prec >= ft_strlen(parsing->aff) && parsing->arg_pos == 1)
+	{
+		if ((*arg == 'd' || *arg == 'i' || *arg == 'x' || *arg == 'X'))
+				parsing->arg_count -= 1;
+		if (*arg != 'c' && *arg != 's' && *arg != 'p' && parsing->width == 0)
 			parsing->arg_count += 1;
 	}
+	else if (parsing->prec >= ft_strlen(parsing->aff) && parsing->arg_pos == 0 && parsing->neg == 1)
+		if (*arg != 'c' && *arg != 's' && *arg != 'p' && parsing->width == 0)
+			parsing->arg_count += 1;
 }
