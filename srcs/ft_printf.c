@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 22:42:43 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/04/29 17:04:24 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int			ft_loop(char *arg, va_list *av, t_parsing parsing, int len)
 			if (parsing.aff)
 				len += ft_putstr_fd(parsing.aff, 1);
 			if (parsing.cnull == 0)
-					ft_putchar_fd(parsing.cnull, 1);
+				ft_putchar_fd(parsing.cnull, 1);
 		}
 		if (!parsing.aff && *arg && *arg != '%')
 		{ //printf("\ngonna print *arg [%c]\n", *arg);

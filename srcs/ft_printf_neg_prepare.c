@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 22:43:50 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/04/29 17:02:14 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ void	ft_neg_prepare3(t_parsing *parsing, int aff_count)
 	{
 		*parsing->aff = parsing->prec > aff_count ? '0' : *parsing->aff;
 		if (parsing->prec > aff_count && parsing->width >
-			parsing->prec && parsing->neg == 0 && parsing->zero == 0)
-				parsing->zero_flags += 1;
-		if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero == 1)
+				parsing->prec && parsing->neg == 0 && parsing->zero == 0)
+			parsing->zero_flags += 1;
+		if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero ==
+				1)
 			parsing->space_flags = parsing->width - ft_strlen(parsing->aff);
 	}
 	else
@@ -71,11 +72,12 @@ void	ft_neg_prepare(char *arg, t_parsing *parsing)
 	if (parsing->prec >= ft_strlen(parsing->aff) && parsing->arg_pos == 1)
 	{
 		if ((*arg == 'd' || *arg == 'i' || *arg == 'x' || *arg == 'X'))
-				parsing->arg_count -= 1;
+			parsing->arg_count -= 1;
 		if (*arg != 'c' && *arg != 's' && *arg != 'p' && parsing->width == 0)
 			parsing->arg_count += 1;
 	}
-	else if (parsing->prec >= ft_strlen(parsing->aff) && parsing->arg_pos == 0 && parsing->neg == 1)
+	else if (parsing->prec >= ft_strlen(parsing->aff) && parsing->arg_pos == 0
+			&& parsing->neg == 1)
 		if (*arg != 'c' && *arg != 's' && *arg != 'p' && parsing->width == 0)
 			parsing->arg_count += 1;
 }

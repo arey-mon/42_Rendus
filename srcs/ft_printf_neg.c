@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 14:57:11 by user42           ###   ########.fr       */
+/*   Updated: 2020/04/29 17:02:50 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_neg_value_w(t_parsing *parsing)
 		*parsing->aff = '0';
 	parsing->space_flags -= 1;
 	if ((parsing->zero == 1 && parsing->prec != -1) || (parsing->zero != 1 &&
-		parsing->width > ft_strlen(parsing->aff)))
+				parsing->width > ft_strlen(parsing->aff)))
 		while (parsing->space_flags-- > 0)
 		{
 			ft_putchar_fd(' ', 1);
@@ -60,7 +60,7 @@ void	ft_neg_value_p(char *arg, t_parsing *parsing)
 		parsing->arg_count++;
 	}
 	if (parsing->width > ft_strlen(parsing->aff) && parsing->prec >
-	ft_strlen(parsing->aff))
+			ft_strlen(parsing->aff))
 		parsing->space_flags = (parsing->width - parsing->prec - 1);
 	while (parsing->space_flags-- > 0)
 	{
@@ -93,10 +93,10 @@ void	ft_neg_value(char *arg, t_parsing *parsing)
 		if (parsing->prec >= ft_strlen(parsing->aff) || parsing->prec == -1)
 			parsing->space_flags -= 1;
 		if (parsing->width > ft_strlen(parsing->aff) &&
-		parsing->width > parsing->prec)
+				parsing->width > parsing->prec)
 			ft_neg_value_w(parsing);
 		else if (parsing->prec >= ft_strlen(parsing->aff)
-		&& parsing->width <= parsing->prec)
+				&& parsing->width <= parsing->prec)
 			ft_neg_value_p(arg, parsing);
 	}
 }
@@ -113,7 +113,7 @@ void	ft_double_neg(char *arg, t_parsing *parsing)
 		if (*arg != 'u' && parsing->arg_pos != 1)
 			ft_putchar_fd('-', 1);
 		if (parsing->width != 0)
-		parsing->arg_count += 1;
+			parsing->arg_count += 1;
 	}
 	while (parsing->zero_flags-- > 0)
 	{

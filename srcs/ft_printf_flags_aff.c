@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 13:04:28 by user42           ###   ########.fr       */
+/*   Updated: 2020/04/29 17:05:06 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@ void	ft_flags_aff2(char *arg, t_parsing *parsing)
 	(void)*arg;
 	if (parsing->aff != NULL)
 	{
-	space = parsing->prec > ft_strlen(parsing->aff) ? parsing->width -
-	parsing->prec : parsing->width - ft_strlen(parsing->aff);
-	while (space-- > 0)
-	{
-		ft_putchar_fd(' ', 1);
-		parsing->arg_count++;
-	}
-	if (parsing->prec > parsing->width)
-		while (parsing->zero_flags-- > 0)
+		space = parsing->prec > ft_strlen(parsing->aff) ? parsing->width -
+			parsing->prec : parsing->width - ft_strlen(parsing->aff);
+		while (space-- > 0)
 		{
-			ft_putchar_fd('0', 1);
+			ft_putchar_fd(' ', 1);
 			parsing->arg_count++;
 		}
+		if (parsing->prec > parsing->width)
+			while (parsing->zero_flags-- > 0)
+			{
+				ft_putchar_fd('0', 1);
+				parsing->arg_count++;
+			}
 	}
 	else if (parsing->aff == NULL && parsing->prec == 0)
-	while (parsing->width-- > 0)
-	{
-		ft_putchar_fd(' ', 1);
-		parsing->arg_count++;
-	}
+		while (parsing->width-- > 0)
+		{
+			ft_putchar_fd(' ', 1);
+			parsing->arg_count++;
+		}
 }
 
 void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
