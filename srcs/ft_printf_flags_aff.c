@@ -79,7 +79,7 @@ void	ft_flags_aff(char *arg, t_parsing *parsing, char c, char *tmp)
 	if (*arg == 's' && parsing->prec == 0)
 		parsing->aff = "";
 	if ((*arg == 's' || *arg == 'c') && parsing->prec >= 0)
-		ft_strings(arg, parsing);
+		ft_strings(arg, parsing, tmp);
 	else if ((*tmp == '-' || parsing->neg == 1))
 		ft_neg_value(arg, parsing);
 	else if (*arg == 'p' && parsing->neg != 1)

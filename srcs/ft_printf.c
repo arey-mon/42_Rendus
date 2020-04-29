@@ -55,9 +55,11 @@ int			ft_arg_count(char *arg, va_list *av, t_parsing *parsing)
 	int		i;
 	int		flags_size;
 	char	c;
+	char *tmp;
 
 	c = ' ';
 	flags_size = 0;
+	tmp = NULL;
 	i = 0;
 	i += ft_get_flags(&arg[i], parsing);
 	i += ft_width(&arg[i], av, parsing);
@@ -66,7 +68,7 @@ int			ft_arg_count(char *arg, va_list *av, t_parsing *parsing)
 	{
 		ft_format_type(arg[i], av, parsing);
 		ft_flags_count(&arg[i], parsing, flags_size);
-		ft_flags_aff(&arg[i], parsing, c);
+		ft_flags_aff(&arg[i], parsing, c, tmp);
 		return (++i);
 	}
 	return (0);

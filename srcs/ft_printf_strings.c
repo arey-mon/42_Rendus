@@ -14,15 +14,14 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	ft_strings(char *arg, t_parsing *parsing)
+void	ft_strings(char *arg, t_parsing *parsing, char *tmp)
 {
-	char *tmp;
 	char c;
 
 	c = ' ';
+	tmp = ft_strdup(parsing->aff);
 	if (parsing->zero == 1)
 		c = '0';
-	tmp = ft_strdup(parsing->aff);
 	if (parsing->prec == 0 && ft_strlen(parsing->aff) <= parsing->width
 			&& parsing->neg == 1)
 	{
@@ -30,17 +29,14 @@ void	ft_strings(char *arg, t_parsing *parsing)
 		parsing->arg_count += ft_strlen(tmp);
 	}
 	if (parsing->prec >= 0)
-		ft_string_precision(arg, parsing, c);
+		ft_string_precision(arg, parsing, c, tmp);
 }
 
-void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
+void	ft_string_precision2(t_parsing *parsing, char c, char *tmp)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
-	tmp = ft_strdup(parsing->aff);
-	(void)*arg;
 	while (parsing->width-- - parsing->prec > 0 && parsing->neg != 1)
 	{
 		write(1, &c, 1);
@@ -65,16 +61,14 @@ void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
 	parsing->aff = NULL;
 }
 
-void	ft_string_precision(char *arg, t_parsing *parsing, char c)
+void	ft_string_precision(char *arg, t_parsing *parsing, char c, char *tmp)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
-	tmp = ft_strdup(parsing->aff);
 	ft_string_exceptions(arg, parsing, c, tmp);
 	if (ft_strlen(tmp) >= parsing->prec)
-		ft_string_precision2(arg, parsing, c);
+		ft_string_precision2(parsing, c, tmp);
 	else if (ft_strlen(tmp) < parsing->prec)
 	{
 		while (parsing->neg != 1 && parsing->width-- - ft_strlen(tmp) > 0)
@@ -90,7 +84,7 @@ void	ft_string_precision(char *arg, t_parsing *parsing, char c)
 				write(1, &c, 1);
 				parsing->arg_count++;
 			}
-			parsing->arg_count += ft_strlen(parsing->aff); // + parsing->width ??
+			parsing->arg_count += ft_strlen(parsing->aff);
 			parsing->aff = NULL;
 		}
 	}

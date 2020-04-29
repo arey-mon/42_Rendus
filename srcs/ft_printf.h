@@ -57,9 +57,9 @@ void				ft_flags_aff_prepa(char *arg, t_parsing *parsing, char c);
 int					ft_arg_count(char *arg, va_list *av, t_parsing *parsing);
 int					ft_width(char *arg, va_list *av, t_parsing *parsing);
 int					ft_precision(char *arg, va_list *av, t_parsing *parsing);
-void				ft_strings(char *arg, t_parsing *parsing);
-void				ft_string_precision(char *arg, t_parsing *parsing, char c);
-void				ft_string_precision2(char *arg, t_parsing *parsing, char c);
+void				ft_strings(char *arg, t_parsing *parsing, char *tmp);
+void				ft_string_precision(char *arg, t_parsing *parsing, char c, char *tmp);
+void				ft_string_precision2(t_parsing *parsing, char c, char *tmp);
 void				ft_string_exceptions(char *arg, t_parsing *parsing, char c,
 		char *tmp);
 void				ft_neg_value(char *arg, t_parsing *parsing);
