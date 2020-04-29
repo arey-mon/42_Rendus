@@ -27,17 +27,14 @@ OBJS = $(addprefix $(PATHTMP)/,$(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "Compilation de ft_printf..."
 	@(ar rc $(NAME) $(OBJS))
 	@(ranlib $(NAME))
-	@echo "Compilation terminée"
 
 $(PATHTMP)/%.o: $(PATHSRCS)/%.c
 	@(mkdir -p tmp)
 	@(gcc $(FLAGS) -I $(HEADERS) -o $@ -c $<)
 
 clean:
-	@echo "Clean"
 	${RM} ${OBJECTS} ${B_OBJECTS}
 
 fclean:	clean
