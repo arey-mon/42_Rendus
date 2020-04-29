@@ -34,7 +34,7 @@ void	ft_strings(char *arg, t_parsing *parsing)
 }
 
 void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
-{
+{ //printf("____ ft_string_precision2 ____\n");
 	int		i;
 	char	*tmp;
 
@@ -75,7 +75,7 @@ void	ft_string_precision(char *arg, t_parsing *parsing, char c)
 	ft_string_exceptions(arg, parsing, c, tmp);
 	if (ft_strlen(tmp) >= parsing->prec)
 		ft_string_precision2(arg, parsing, c);
-	else if (ft_strlen(tmp) <= parsing->prec)
+	else if (ft_strlen(tmp) < parsing->prec)
 	{
 		while (parsing->neg != 1 && parsing->width-- - ft_strlen(tmp) > 0)
 		{

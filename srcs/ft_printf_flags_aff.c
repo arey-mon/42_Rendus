@@ -19,6 +19,8 @@ void	ft_flags_aff2(char *arg, t_parsing *parsing)
 	int space;
 
 	(void)*arg;
+	if (parsing->aff != NULL)
+	{
 	space = parsing->prec > ft_strlen(parsing->aff) ? parsing->width -
 	parsing->prec : parsing->width - ft_strlen(parsing->aff);
 	while (space-- > 0)
@@ -32,6 +34,13 @@ void	ft_flags_aff2(char *arg, t_parsing *parsing)
 			ft_putchar_fd('0', 1);
 			parsing->arg_count++;
 		}
+	}
+	else if (parsing->aff == NULL && parsing->prec == 0)
+	while (parsing->width-- > 0)
+	{
+		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
 }
 
 void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
@@ -65,7 +74,7 @@ void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
 void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
 {
 	char *tmp;
-//printf("\n>>>into flags_aff, your aff is [%s]\n", parsing->aff);
+//printf("\n>>>into flags_aff, your aff is [%s]\n", parsing->aff));
 	c = ' ';
 	tmp = ft_strdup(parsing->aff);
 	ft_flags_aff_prepa(arg, parsing, c);
@@ -79,7 +88,7 @@ void	ft_flags_aff(char *arg, t_parsing *parsing, char c)
 		ft_pointers_deal(arg, parsing);
 	else
 	{ //printf("else of flags_aff\n");
-		if (parsing->zero == 1 && parsing->prec != -1 && parsing->aff != NULL)
+		if (parsing->zero == 1 && parsing->prec != -1)
 			ft_flags_aff2(arg, parsing);
 		else
 			ft_flags_aff3(arg, parsing, c, tmp);

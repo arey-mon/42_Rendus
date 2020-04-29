@@ -25,6 +25,8 @@ void	ft_neg_prepare2(char *arg, t_parsing *parsing)
 			parsing->space_flags += 1;
 			parsing->arg_count -= 1;
 		}
+		else if (parsing->prec == ft_strlen(parsing->aff))
+			parsing->arg_count -= 1;
 		else if (parsing->prec < ft_strlen(parsing->aff) &&
 				parsing->prec != -1 && parsing->zero == 1)
 			parsing->space_flags -= 1;

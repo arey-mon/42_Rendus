@@ -116,7 +116,7 @@ int			ft_printf(const char *format, ...)
 	va_start(av, format);
 	arg = (char *)format;
 	count = ft_loop(arg, &av, parsing, len);
-	//printf("ft_ret = [%d]\n", count);
+	printf("ft_ret = [%d]\n", count);
 	va_end(av);
 	return (count);
 }
