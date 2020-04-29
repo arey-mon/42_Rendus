@@ -90,6 +90,18 @@ void	ft_string_precision(char *arg, t_parsing *parsing, char c, char *tmp)
 	}
 }
 
+void	ft_string_exceptions_neg(t_parsing *parsing, char c, char *tmp)
+{
+	ft_putchar_fd(*tmp, 1);
+	parsing->arg_count += 1;
+	while (parsing->space_flags-- > 0)
+	{
+		write(1, &c, 1);
+		parsing->arg_count++;
+	}
+	parsing->aff = NULL;
+}
+
 void	ft_string_exceptions(char *arg, t_parsing *parsing, char c, char *tmp)
 {
 	tmp = ft_strdup(parsing->aff);
@@ -112,15 +124,6 @@ void	ft_string_exceptions(char *arg, t_parsing *parsing, char c, char *tmp)
 			parsing->arg_count += 1;
 		}
 		else if (parsing->neg == 1)
-		{
-			ft_putchar_fd(*tmp, 1);
-			parsing->arg_count += 1;
-			while (parsing->space_flags-- > 0)
-			{
-				write(1, &c, 1);
-				parsing->arg_count++;
-			}
-		}
-		parsing->aff = NULL;
+			ft_string_exceptions_neg(parsing, c, tmp);
 	}
 }
