@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 17:08:48 by user42           ###   ########.fr       */
+/*   Updated: 2020/04/29 17:50:32 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int					ft_get_flags(char *arg, t_parsing *parsing);
 void				ft_format_type(char type, va_list *av, t_parsing *parsing);
 void				ft_flags_count(char *arg, t_parsing *parsing,
 		int flags_size);
-void				ft_flags_aff(char *arg, t_parsing *parsing, char c, char *tmp);
+void				ft_flags_aff(char *arg, t_parsing *parsing, char c, char 
+		*tmp);
 void				ft_flags_aff2(char *arg, t_parsing *parsing);
 void				ft_flags_aff3(char *arg, t_parsing *parsing, char c,
 		char *tmp);
@@ -58,14 +59,17 @@ int					ft_arg_count(char *arg, va_list *av, t_parsing *parsing);
 int					ft_width(char *arg, va_list *av, t_parsing *parsing);
 int					ft_precision(char *arg, va_list *av, t_parsing *parsing);
 void				ft_strings(char *arg, t_parsing *parsing, char *tmp);
-void				ft_string_precision(char *arg, t_parsing *parsing, char c, char *tmp);
+void				ft_string_precision(char *arg, t_parsing *parsing, char c,
+		char *tmp);
 void				ft_string_precision2(t_parsing *parsing, char c, char *tmp);
 void				ft_string_exceptions(char *arg, t_parsing *parsing, char c,
 		char *tmp);
-void				ft_string_exceptions_neg(t_parsing *parsing, char c, char *tmp);
+void				ft_string_exceptions_neg(t_parsing *parsing, char c, char
+		*tmp);
 void				ft_neg_value(char *arg, t_parsing *parsing);
 void				ft_double_neg(char *arg, t_parsing *parsing);
 void				ft_neg_value_w(t_parsing *parsing);
+void				ft_neg_value_w2(t_parsing *parsing);
 void				ft_neg_value_p(char *arg, t_parsing *parsing);
 void				ft_neg_prepare(char *arg, t_parsing *parsing);
 void				ft_neg_prepare2(char *arg, t_parsing *parsing);

@@ -6,13 +6,24 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/29 17:02:50 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/04/29 17:57:53 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 #include <stdio.h>
+
+void	ft_neg_value_w2(t_parsing *parsing)
+{
+	if (parsing->zero == 1 && parsing->prec > ft_strlen(parsing->aff))
+		parsing->zero_flags += 1;
+	while ((parsing->zero_flags-- - 1) > 0)
+	{
+		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
+}
 
 void	ft_neg_value_w(t_parsing *parsing)
 {
@@ -38,13 +49,7 @@ void	ft_neg_value_w(t_parsing *parsing)
 		ft_putchar_fd('-', 1);
 		parsing->arg_count++;
 	}
-	if (parsing->zero == 1 && parsing->prec > ft_strlen(parsing->aff))
-		parsing->zero_flags += 1;
-	while ((parsing->zero_flags-- - 1) > 0)
-	{
-		ft_putchar_fd('0', 1);
-		parsing->arg_count++;
-	}
+	ft_neg_value_w2(parsing);
 }
 
 void	ft_neg_value_p(char *arg, t_parsing *parsing)
@@ -79,6 +84,7 @@ void	ft_neg_value_p(char *arg, t_parsing *parsing)
 void	ft_neg_value(char *arg, t_parsing *parsing)
 {
 	int size;
+
 	(void)*arg;
 	size = parsing->prec >= parsing->width ? parsing->prec : parsing->width;
 	ft_neg_prepare(arg, parsing);

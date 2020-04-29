@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/29 17:04:24 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/04/29 17:58:44 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			ft_arg_count(char *arg, va_list *av, t_parsing *parsing)
 	int		i;
 	int		flags_size;
 	char	c;
-	char *tmp;
+	char	*tmp;
 
 	c = ' ';
 	flags_size = 0;
@@ -90,15 +90,13 @@ int			ft_loop(char *arg, va_list *av, t_parsing parsing, int len)
 				ft_putchar_fd(parsing.cnull, 1);
 		}
 		if (!parsing.aff && *arg && *arg != '%')
-		{ //printf("\ngonna print *arg [%c]\n", *arg);
+		{
 			ft_putchar_fd(*arg, 1);
 			len++;
 			arg++;
 		}
 		free(parsing.aff);
 	}
-	// printf("and the len is [%d]\n", len);
-	// printf("the arg_count is [%d]\n", parsing.arg_count);
 	len += parsing.arg_count;
 	return (len);
 }
@@ -117,7 +115,6 @@ int			ft_printf(const char *format, ...)
 	va_start(av, format);
 	arg = (char *)format;
 	count = ft_loop(arg, &av, parsing, len);
-	//printf("ft_ret = [%d]\n", count);
 	va_end(av);
 	return (count);
 }
