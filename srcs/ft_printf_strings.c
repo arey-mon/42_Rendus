@@ -34,7 +34,7 @@ void	ft_strings(char *arg, t_parsing *parsing)
 }
 
 void	ft_string_precision2(char *arg, t_parsing *parsing, char c)
-{ //printf("____ ft_string_precision2 ____\n");
+{
 	int		i;
 	char	*tmp;
 

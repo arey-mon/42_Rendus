@@ -49,7 +49,7 @@ int					ft_get_flags(char *arg, t_parsing *parsing);
 void				ft_format_type(char type, va_list *av, t_parsing *parsing);
 void				ft_flags_count(char *arg, t_parsing *parsing,
 		int flags_size);
-void				ft_flags_aff(char *arg, t_parsing *parsing, char c);
+void				ft_flags_aff(char *arg, t_parsing *parsing, char c, char *tmp);
 void				ft_flags_aff2(char *arg, t_parsing *parsing);
 void				ft_flags_aff3(char *arg, t_parsing *parsing, char c,
 		char *tmp);

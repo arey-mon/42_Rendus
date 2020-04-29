@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_pointers_deal(char *arg, t_parsing *parsing)
-{ //printf("___ POINTERS_DEAL ___\n");
+{
 	(void)*arg;
 	if (parsing->aff == NULL)
 	{
@@ -40,5 +39,4 @@ void	ft_pointers_deal(char *arg, t_parsing *parsing)
 		parsing->arg_count += ft_strlen(parsing->aff) + 2;
 		parsing->aff = NULL;
 	}
-	//ft_get_count_p(parsing);
 }

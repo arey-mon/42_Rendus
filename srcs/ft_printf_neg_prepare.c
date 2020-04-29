@@ -57,11 +57,10 @@ void	ft_neg_prepare3(t_parsing *parsing, int aff_count)
 				parsing->space_flags -= 1;
 		}
 	}
-	//printf(">>>out neg_prepare3, arg_count is [%d]\n", parsing->arg_count);
 }
 
 void	ft_neg_prepare(char *arg, t_parsing *parsing)
-{ //printf("what's neg for you ? [%d]\n", parsing->neg);
+{
 	int aff_count;
 
 	aff_count = 0;

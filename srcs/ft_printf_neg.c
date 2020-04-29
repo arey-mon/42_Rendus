@@ -48,7 +48,7 @@ void	ft_neg_value_w(t_parsing *parsing)
 }
 
 void	ft_neg_value_p(char *arg, t_parsing *parsing)
-{ //printf("entered neg_value_p\n");
+{
 	if (*arg != 'u')
 	{
 		ft_putchar_fd('-', 1);
@@ -99,11 +99,10 @@ void	ft_neg_value(char *arg, t_parsing *parsing)
 		&& parsing->width <= parsing->prec)
 			ft_neg_value_p(arg, parsing);
 	}
-	//printf(">>>>out neg_value, count is [%d]\n", parsing->arg_count);
 }
 
 void	ft_double_neg(char *arg, t_parsing *parsing)
-{ //printf(">>>>into double_neg, count is [%d]\n", parsing->arg_count);
+{
 	if (parsing->width <= ft_strlen(parsing->aff))
 		parsing->space_flags = 0;
 	if (parsing->prec >= ft_strlen(parsing->aff) && parsing->width >=
@@ -129,5 +128,4 @@ void	ft_double_neg(char *arg, t_parsing *parsing)
 	}
 	parsing->arg_count += ft_strlen(parsing->aff);
 	parsing->aff = NULL;
-	//printf(">>>>out of double_neg, count is [%d]\n", parsing->arg_count);
 }

@@ -39,11 +39,11 @@ void	ft_flags_aff_prepa(char *arg, t_parsing *parsing, char c)
 			parsing->space_flags -= 1;
 		parsing->arg_count += 1;
 	}
-	//printf(">>>>out flags_aff_prepa, count is [%d]\n", parsing->arg_count);
 }
 
 void	ft_flags_count(char *arg, t_parsing *parsing, int flags_size)
-{ (void)flags_size;
+{
+	(void)flags_size;
 	if (parsing->zero == 0)
 	{
 		parsing->space_flags = (parsing->prec <= ft_strlen(parsing->aff)) ?
@@ -66,7 +66,6 @@ void	ft_flags_count(char *arg, t_parsing *parsing, int flags_size)
 	}
 	if (*arg == 'p')
 		parsing->space_flags -= 2;
-	//parsing->arg_count += (ft_get_count(arg, parsing, flags_size) - 1);
 }
 
 int		ft_get_flags(char *arg, t_parsing *parsing)
@@ -118,7 +117,7 @@ int		ft_width(char *arg, va_list *av, t_parsing *parsing)
 }
 
 int		ft_precision(char *arg, va_list *av, t_parsing *parsing)
-{ //printf(" ft_precision with P == [%d]\n", parsing->prec);
+{
 	int i;
 
 	i = 0;

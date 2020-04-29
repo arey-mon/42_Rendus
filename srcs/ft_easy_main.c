@@ -24,50 +24,14 @@ int main (void)
   //char *s = "1";
   //char *s = "quinze_characts";
 
-
 /*DESTRUCTOR FALSE TESTS
 // THIS IS RELATIVE TO x && X and arg==0 and P==0 || P == 1
 
 printf("pr_ret = [%d]\n",
 
-
-Generating mains of 1000 tests (5/20)
-Comparing outputs:
-
-Diff for printf("i58%011.0X", 0);
-
-Diff for printf("%05.0X60%*x%18Xb", 0, 7, 2147483647, -587819009);
-
-Diff for printf("Y%-11.5d%.0ico%-9cCYy%x%016.0i%X%-u", -2147483647, 0, 'G', -2147483647, 0, 0, 2147483647);
-
-
-Diff for printf("%01d %-.1uUB", 2147483647, 0);
-
-Diff for printf("%.2i%-.*u32%6cIuXIITLcIzhJu%.*u", -2147483647, 1, 0, 'M', -1, 0);
-
-
-Diff for printf("%-19.*u", 10, -823078038);
-
-Diff for printf("%7.5u%-20u%012.0u%-17.0s", 2147483647, 0, 0, "GvF0AG");
-
-Diff for printf("%0d%02.*X%.*ucvuLpttQhk", 0, 0, 0, 4, -2147483647);
-
-Diff for printf("%14.3usg%%m3ggI%-18.*u%%%.5sIJ8", -2147483647, 10, 2147483647, "");
-
-Diff for printf("eR%05.0uMA%-*.3d", 0, 8, 0);
-
-Diff for printf("xMWZgpk%-sIg4xNhh%012.0u%7.4i", "uqC7adjMWAK7WDNsQgP", 0, 2147483647);
-
-
 Diff for printf("Q%.5sdxZz%08.0dV8HpP", "", 0);
-
-
 Diff for printf("d4s3%0i%014.0XjZT %2.*x%*dOTnzrSU%06.5ubyo", -1512177470, 0, -5, 0, 9, 2147483647, -2147483647);
-
-
 Diff for printf("R4MoIEceyx57kpEAz9DL%*.0u%-16.1u", -10, -2147483647, 0);
-
-
 Diff for printf("lsOwu%%%13x%014.0d62PltF%20d%-.2u", 2147483647, 0, 1756235986, -1161278665);
 
 
@@ -120,164 +84,119 @@ Diff for printf("aoZ%-16cNtIRL%s gVij%-xc%017.0d", 's', NULL, 0, 0);
 ftprintf: |aoZs               NtIRL(null) gVij0c-- 37 --|
 
 Diff for printf("%07.0i%%%-.*d%.3u", 0, 5, 2147483647, 0);
-  printf: |       %2147483647000-- 21 --|
-ftprintf: |%2147483647000-- 14 --|
 
 Diff for printf("OcBh%016dkjRb0rtCBGJYdb%015.0xz4HS0hOn", 0, 0);
-  printf: |OcBh0000000000000000kjRb0rtCBGJYdb               z4HS0hOn-- 57 --|
-ftprintf: |OcBh0000000000000000kjRb0rtCBGJYdbz4HS0hOn-- 42 --|
 
 Diff for printf("qj%-17dU JOEy95%-.1u", 2147483647, 0);
-  printf: |qj2147483647       U JOEy950-- 28 --|
-ftprintf: |qj2147483647       U JOEy950-- 29 --|
 
 Diff for printf("%*.4x2vJciW%05.0Xqn1ojusk%5.*i%*cgLFzTT9y", -6, -2147483647, 0, -1, 0, -7, 'w');
-  printf: |800000012vJciW     qn1ojusk    0w      gLFzTT9y-- 47 --|
-ftprintf: |800000012vJciWqn1ojusk    0w      gLFzTT9y-- 42 --|
 
 Diff for printf("gq%05.0uo5pHIiTZ", 0);
-  printf: |gq     o5pHIiTZ-- 15 --|
-ftprintf: |gqo5pHIiTZ-- 10 --|
 
 Diff for printf("%09.0u%10sJaQ7mbFt%*c%16.0s%016uq", 0, NULL, -10, '\0', "apHq69YjUAoWiPDn24fA", -2147483647);
-  printf: |             (null)JaQ7mbFt                         0000002147483649q-- 70 --|
-ftprintf: |    (null)JaQ7mbFt                         0000002147483649q-- 61 --|
 
 Diff for printf("GtQ%sjvWCM%-.1uhiDHp7OEtx9 5G%-.1x", NULL, 0, -2129279322);
-  printf: |GtQ(null)jvWCM0hiDHp7OEtx9 5G8115c6a6-- 37 --|
-ftprintf: |GtQ(null)jvWCM0hiDHp7OEtx9 5G8115c6a6-- 38 --|
 
 Diff for printf("hnL%015.5u8 aF%-15iCrD%dzjAH4d2%0*.1u", -2147483647, 0, 2147483647, -2, 0);
-  printf: |hnL     21474836498 aF0              CrD2147483647zjAH4d20 -- 59 --|
-ftprintf: |hnL     21474836498 aF0              CrD2147483647zjAH4d20 -- 60 --|
 
 Diff for printf("%13sly5QJ%0.4XsfVDC%07.0X%-20Xzuvc9HK", "RDrgHymqEkIrMoFJzy8N3tPolOL3ap9O V4JDC9A2AQDpNgABDWXuIt7yDsvfPwzsL3rVXsuPWvxpCS4P", 2147483647, 0, 2147483647);
-  printf: |RDrgHymqEkIrMoFJzy8N3tPolOL3ap9O V4JDC9A2AQDpNgABDWXuIt7yDsvfPwzsL3rVXsuPWvxpCS4Ply5QJ7FFFFFFFsfVDC       7FFFFFFF            zuvc9HK-- 133 --|
-ftprintf: |RDrgHymqEkIrMoFJzy8N3tPolOL3ap9O V4JDC9A2AQDpNgABDWXuIt7yDsvfPwzsL3rVXsuPWvxpCS4Ply5QJ7FFFFFFFsfVDC7FFFFFFF            zuvc9HK-- 126 --|
 
 Diff for printf("L9T2sJC%*sAJ%05.0dZ6OLhVjcnY7iD", 6, "", 0);
-  printf: |L9T2sJC      AJ     Z6OLhVjcnY7iD-- 33 --|
-ftprintf: |L9T2sJC      AJZ6OLhVjcnY7iD-- 28 --|
 
 Diff for printf("%cw8a%11sZHmKfMJJqWq%%6BE%010.0i", '\0', "Ozc2ASfBH49mO8l2UH5DwFbab", 0);
-  printf: |w8aOzc2ASfBH49mO8l2UH5DwFbabZHmKfMJJqWq%6BE          -- 54 --|
-ftprintf: |w8aOzc2ASfBH49mO8l2UH5DwFbabZHmKfMJJqWq%6BE-- 44 --|
-
-
-Generating mains of 1000 tests (13/20)
-Comparing outputs:
 
 Diff for printf("iqW%*iF Uq%-.1uuElx", 9, 0, 0);
-  printf: |iqW        0F Uq0uElx-- 21 --|
-ftprintf: |iqW        0F Uq0uElx-- 22 --|
 
 Diff for printf("Ban%0.4X Xyn%03.0dsl", 2147483647, 0);
-  printf: |Ban7FFFFFFF Xyn   sl-- 20 --|
-ftprintf: |Ban7FFFFFFF Xynsl-- 17 --|
 
 Diff for printf("giAPtIf0zT%-1xkw%-.1u", 752598152, 0);
-  printf: |giAPtIf0zT2cdbbc88kw0-- 21 --|
-ftprintf: |giAPtIf0zT2cdbbc88kw0-- 22 --|
 
 Diff for printf("5Na6j%c%011.0u", '\0', 0);
-  printf: |5Na6j           -- 17 --|
-ftprintf: |5Na6j-- 6 --|
 
 Diff for printf("hkk%.3s%06.0xX6l", "IzZGhEgrbjc1Mvsl", 0);
-  printf: |hkkIzZ      X6l-- 15 --|
-ftprintf: |hkkIzZX6l-- 9 --|
 
 Diff for printf("0RDEn6Q UQG9G75%016i%%SO%09.0dht", 2147483647, 0);
-  printf: |0RDEn6Q UQG9G750000002147483647%SO         ht-- 45 --|
-ftprintf: |0RDEn6Q UQG9G750000002147483647%SOht-- 36 --|
 
 Diff for printf("%01u%06iEm%-.1u", -2147483647, 1795822385, 0);
-  printf: |21474836491795822385Em0-- 23 --|
-ftprintf: |21474836491795822385Em0-- 24 --|
 
 Diff for printf("%-11.1u", 0);
-  printf: |0          -- 11 --|
-ftprintf: |0          -- 12 --|
 
 Diff for printf("SLQ8%08.0x%-17.*i5U9%012xoZCQSQL%06.0XhgRl%11X", 0, 6, 1136268268, 821233827, -2147483647, -1654016125);
-  printf: |SLQ8        1136268268       5U9000030f308a3oZCQSQL80000001hgRl   9D69B783-- 74 --|
-ftprintf: |SLQ81136268268       5U9000030f308a3oZCQSQL80000001hgRl   9D69B783-- 66 --|
 
 Diff for printf("oVtAWhafCKAS9%0.4xc3fJn%0*u%06.0xP%-d", -2147483647, -6, 0, 0, 2147483647);
-  printf: |oVtAWhafCKAS980000001c3fJn0           P2147483647-- 49 --|
-ftprintf: |oVtAWhafCKAS980000001c3fJn0     P2147483647-- 43 --|
 
 Diff for printf("%%%-14.1uWJWO%%EM%1.3i2R", 0, 2147483647);
-  printf: |%0             WJWO%EM21474836472R-- 34 --|
-ftprintf: |%0             WJWO%EM21474836472R-- 35 --|
+
 
 Diff for printf("%i%.3sK7ht%-*.*X%8s%-.1u%%", -1996454766, "", 3, 5, 0, NULL, 0);
-  printf: |-1996454766K7ht00000  (null)0%-- 30 --|
-ftprintf: |-1996454766K7ht00000  (null)0%-- 31 --|
+
 
 Diff for printf("%czgL%05xU%.4XSt%011.0u", 'M', -2147483647, 2147483647, 0);
-  printf: |MzgL80000001U7FFFFFFFSt           -- 34 --|
-ftprintf: |MzgL80000001U7FFFFFFFSt-- 23 --|
+
 
 Diff for printf("%-c%-2X%-.*dXhemLzLnmh%-19.1uGxTAWdMLKYiCO", '\0', 446814258, -5, 2147483647, 0);
-  printf: |1AA1D8322147483647XhemLzLnmh0                  GxTAWdMLKYiCO-- 61 --|
-ftprintf: |1AA1D8322147483647XhemLzLnmh0                  GxTAWdMLKYiCO-- 62 --|
 
 Diff for printf("%09.0X", 0);
-  printf: |         -- 9 --|
-ftprintf: |-- 0 --|
 
 Diff for printf("wdxoc%-15.3iBKb%16iZGL Q%014.0x", 0, -2147483647, 0);
-  printf: |wdxoc000            BKb     -2147483647ZGL Q              -- 58 --|
-ftprintf: |wdxoc000            BKb     -2147483647ZGL Q-- 44 --|
 
-
-Generating mains of 1000 tests (15/20)
-Comparing outputs:
 
 Diff for printf("qQ%03.0ilD9I%%O1uHNmSJmV8JDC", 0);
-  printf: |qQ   lD9I%O1uHNmSJmV8JDC-- 24 --|
-ftprintf: |qQlD9I%O1uHNmSJmV8JDC-- 21 --|
+
 
 Diff for printf("%-2i%%CYfN%018.0XjX788Tv7r%X", 0, 0, 2043979736);
-  printf: |0 %CYfN                  jX788Tv7r79D4A7D8-- 42 --|
-ftprintf: |0 %CYfNjX788Tv7r79D4A7D8-- 24 --|
 
 Diff for printf("fOvL%020.0u%-6.3X%01ikFISLA3KY", 0, 0, -2147483647);
-  printf: |fOvL                    000   -2147483647kFISLA3KY-- 50 --|
-ftprintf: |fOvL000   -2147483647kFISLA3KY-- 30 --|
-
-
-Generating mains of 1000 tests (16/20)
-Comparing outputs:
 
 Diff for printf("%%2fu%19s%03.0XGDQOeV%.*x", "Y9P15sTwhVCveo3S0E1vCHrpvSeb BxbpV9RduV7 wc4iL6VaCXDQssMtpplQ4pbZ9rff", 0, 0, 0);
-  printf: |%2fuY9P15sTwhVCveo3S0E1vCHrpvSeb BxbpV9RduV7 wc4iL6VaCXDQssMtpplQ4pbZ9rff   GDQOeV-- 82 --|
-ftprintf: |%2fuY9P15sTwhVCveo3S0E1vCHrpvSeb BxbpV9RduV7 wc4iL6VaCXDQssMtpplQ4pbZ9rffGDQOeV-- 79 --|
 
 
 Diff for printf("%-*.5dcGZJ%%%%%6.*x%014.*umBy", 7, 0, 3, 2147483647, 0, 0);
-  printf: |00000  cGZJ%%7fffffff              mBy-- 38 --|
-ftprintf: |00000  cGZJ%%7fffffffmBy-- 24 --|
 
-Generating mains of 1000 tests (17/20)
-Comparing outputs:
 
 Diff for printf("m1Ka%-c%*df%03.0uFH3X", '\0', 9, -2147483647, 0);
-  printf: |m1Ka-2147483647f   FH3X-- 24 --|
-ftprintf: |m1Ka-2147483647fFH3X-- 21 --|
 
 Diff for printf("%17d%0x5pHE%0*.*d", 686549370, -2147483647, 10, 0, 0);
-  printf: |        686549370800000015pHE          -- 39 --|
-ftprintf: |        686549370800000015pHE-- 29 --|
 
 Diff for printf("%019.*u%016.0x%-cerGV%-.1d", 4, -2147483647, 0, 'L', -2147483647);
-  printf: |         2147483649                LerGV-2147483647-- 51 --|
-ftprintf: |         2147483649LerGV-2147483647-- 35 --|
+
 
 
 
 // DESTRUCTOR CORRECTIONS
+printf("pr_ret = [%d]\n",printf("%-19.*u", 10, -823078038));
+ft_printf("%-19.*u", 10, -823078038);
+
+printf("pr_ret = [%d]\n",printf("%7.5u%-20u%012.0u%-17.0s", 2147483647, 0, 0, "GvF0AG"));
+ft_printf("%7.5u%-20u%012.0u%-17.0s", 2147483647, 0, 0, "GvF0AG");
+
+printf("pr_ret = [%d]\n",printf("%0d%02.*X%.*ucvuLpttQhk", 0, 0, 0, 4, -2147483647));
+ft_printf("%0d%02.*X%.*ucvuLpttQhk", 0, 0, 0, 4, -2147483647);
+
+printf("pr_ret = [%d]\n",printf("%14.3usg%%m3ggI%-18.*u%%%.5sIJ8", -2147483647, 10, 2147483647, ""));
+ft_printf("%14.3usg%%m3ggI%-18.*u%%%.5sIJ8", -2147483647, 10, 2147483647, "");
+
+printf("pr_ret = [%d]\n",printf("eR%05.0uMA%-*.3d", 0, 8, 0));
+ft_printf("eR%05.0uMA%-*.3d", 0, 8, 0);
+
+printf("pr_ret = [%d]\n",printf("xMWZgpk%-sIg4xNhh%012.0u%7.4i", "uqC7adjMWAK7WDNsQgP", 0, 2147483647));
+ft_printf("xMWZgpk%-sIg4xNhh%012.0u%7.4i", "uqC7adjMWAK7WDNsQgP", 0, 2147483647);
+
+printf("pr_ret = [%d]\n",printf("i58%011.0X", 0));
+ft_printf("i58%011.0X", 0);
+
+printf("pr_ret = [%d]\n",printf("%05.0X60%*x%18Xb", 0, 7, 2147483647, -587819009));
+ft_printf("%05.0X60%*x%18Xb", 0, 7, 2147483647, -587819009);
+
+printf("pr_ret = [%d]\n",printf("Y%-11.5d%.0ico%-9cCYy%x%016.0i%X%-u", -2147483647, 0, 'G', -2147483647, 0, 0, 2147483647));
+ft_printf("Y%-11.5d%.0ico%-9cCYy%x%016.0i%X%-u", -2147483647, 0, 'G', -2147483647, 0, 0, 2147483647);
+
+printf("pr_ret = [%d]\n",printf("%01d %-.1uUB", 2147483647, 0));
+ft_printf("%01d %-.1uUB", 2147483647, 0);
+
+printf("pr_ret = [%d]\n",printf("%.2i%-.*u32%6cIuXIITLcIzhJu%.*u", -2147483647, 1, 0, 'M', -1, 0));
+ft_printf("%.2i%-.*u32%6cIuXIITLcIzhJu%.*u", -2147483647, 1, 0, 'M', -1, 0);
+
 
 printf("pr_ret = [%d]\n",printf("A18l6I5fy%ciSm8%06.0x%-.5i", '\0', 0, -2147483647));
 ft_printf("A18l6I5fy%ciSm8%06.0x%-.5i", '\0', 0, -2147483647);

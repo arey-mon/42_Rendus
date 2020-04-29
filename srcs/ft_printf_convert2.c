@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int			ft_atoi(const char *str)
 {
@@ -42,7 +41,7 @@ int			ft_atoi(const char *str)
 }
 
 char		*ft_putnbr_base_ulong2(unsigned long nbr, char *base, int size_base)
-{ //printf("FT_PUTNB_BASE2\n");
+{
 	int		i;
 	int		nbr_final[1000];
 	char	*tmp;
@@ -62,7 +61,6 @@ char		*ft_putnbr_base_ulong2(unsigned long nbr, char *base, int size_base)
 	while (--i >= 0)
 		tmp[j++] = base[nbr_final[i]];
 	tmp[j] = '\0';
-	//printf("YOUR TMP IS [%s]\n", tmp);
 	return (tmp);
 }
 
@@ -72,7 +70,7 @@ char		*ft_putnbr_base_ulong(unsigned long nbr, char *base)
 	int		size_base;
 	char	*tmp;
 	int		j;
-//printf("FT_PUTNB_BASE\n");
+
 	i = 0;
 	j = 0;
 	tmp = NULL;
@@ -84,7 +82,6 @@ char		*ft_putnbr_base_ulong(unsigned long nbr, char *base)
 		j++;
 		tmp[j] = '\0';
 		j--;
-		//printf("YOUR TMP IS [%s]\n", tmp);
 		return (tmp);
 	}
 	else
