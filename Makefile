@@ -31,7 +31,6 @@ $(NAME): $(OBJS)
 	@(ranlib $(NAME))
 
 $(PATHTMP)/%.o: $(PATHSRCS)/%.c
-	@(mkdir -p tmp)
 	@(gcc $(FLAGS) -I $(HEADERS) -o $@ -c $<)
 
 clean:
