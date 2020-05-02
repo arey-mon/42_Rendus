@@ -1,3 +1,4 @@
+
 NAME = libftprintf.a
 
 SRC =		ft_printf.c \
@@ -11,7 +12,7 @@ SRC =		ft_printf.c \
 			ft_printf_neg_prepare.c \
 			ft_printf_p.c \
 			ft_printf_strings.c
-			
+
 
 PATHSRCS = srcs
 
@@ -31,6 +32,7 @@ $(NAME): $(OBJS)
 	@(ranlib $(NAME))
 
 $(PATHTMP)/%.o: $(PATHSRCS)/%.c
+	@(mkdir -p tmp)
 	@(gcc $(FLAGS) -I $(HEADERS) -o $@ -c $<)
 
 clean:

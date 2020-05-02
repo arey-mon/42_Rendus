@@ -6,12 +6,11 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/29 17:58:44 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/05/02 17:16:55 by apreymon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void		ft_init_parsing(t_parsing *parsing)
 {
@@ -110,7 +109,6 @@ int			ft_printf(const char *format, ...)
 	t_parsing	parsing;
 
 	len = 0;
-	setbuf(stdout, NULL);
 	parsing.arg_count = 0;
 	va_start(av, format);
 	arg = (char *)format;
