@@ -70,6 +70,7 @@ void				ft_string_exceptions_neg(t_parsing *parsing, char c, char
 		*tmp);
 void				ft_neg_value(char *arg, t_parsing *parsing);
 void				ft_double_neg(char *arg, t_parsing *parsing);
+void				ft_double_neg_prepa(t_parsing *parsing);
 void				ft_neg_value_w(t_parsing *parsing);
 void				ft_neg_value_w2(t_parsing *parsing);
 void				ft_neg_value_p(char *arg, t_parsing *parsing);
