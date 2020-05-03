@@ -1,0 +1,6 @@
+nginx will load all files in /usr/local/etc/nginx/servers/.
+
+Downloading a single file
+# wget -X path/to/local.copy http://example.com/url/to/download.html
+Downloading a directory
+# wget -e robots=off -r -np https://www.w3.org/History/19921103-hypertext/hypertext/
