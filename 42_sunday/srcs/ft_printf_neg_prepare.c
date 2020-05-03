@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void	ft_double_neg_prepa(t_parsing *parsing)
+void	ft_double_neg_prepa(char *arg, t_parsing *parsing)
 {
 	if (parsing->width <= ft_strlen(parsing->aff))
 		parsing->space_flags = 0;

@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/05/03 12:09:47 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/05/03 17:18:41 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,11 @@ int			ft_printf(const char *format, ...)
 	int			count;
 	int			len;
 	t_parsing	parsing;
+
 	len = 0;
-	setbuf(stdout, NULL);
 	parsing.arg_count = 0;
 	va_start(av, format);
 	arg = (char *)format;
-//printf("gonna initialise again, arg is [%c]\n", *arg);
 	count = ft_loop(arg, &av, parsing, len);
 	va_end(av);
 	return (count);

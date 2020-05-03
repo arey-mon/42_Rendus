@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/05/03 12:55:50 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/05/03 17:18:08 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,8 @@ void	ft_neg_value_p(char *arg, t_parsing *parsing)
 }
 
 void	ft_double_neg(char *arg, t_parsing *parsing)
-{ //printf("\n____ ft_double_neg _____\n");
-// 	printf("space->flags is [%d]\n", parsing->space_flags);
-//printf("P is [%d] -- stlen(aff) is [%d]\n", parsing->prec, ft_strlen(parsing->aff));
-	if (parsing->width <= ft_strlen(parsing->aff))
-		parsing->space_flags = 0;
-	if (parsing->prec >= ft_strlen(parsing->aff) && parsing->width >=
-			ft_strlen(parsing->aff))
-		parsing->space_flags -= 1;
-	if (parsing->neg2 == 0 && parsing->prec == ft_strlen(parsing->aff) && parsing->arg_pos != 1 && *arg != 'u')
-	 	parsing->space_flags -= 1;
+{
+	ft_double_neg_prepa(parsing);
 	if ((ft_strlen(parsing->aff) <= parsing->prec))
 	{
 		if (*arg != 'u' && parsing->arg_pos != 1)
@@ -115,7 +107,7 @@ void	ft_double_neg(char *arg, t_parsing *parsing)
 }
 
 void	ft_neg_value(char *arg, t_parsing *parsing)
-{ //printf("\n entering neg value with count [%d], *arg [%c]\n", parsing->arg_count, *arg);
+{
 	int size;
 
 	(void)*arg;

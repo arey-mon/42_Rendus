@@ -83,7 +83,7 @@ void	ft_neg_value_p(char *arg, t_parsing *parsing)
 
 void	ft_double_neg(char *arg, t_parsing *parsing)
 {
-	ft_double_neg_prepa(parsing);
+	ft_double_neg_prepa(arg, parsing);
 	if ((ft_strlen(parsing->aff) <= parsing->prec))
 	{
 		if (*arg != 'u' && parsing->arg_pos != 1)

@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/04/24 12:10:28 by user42           ###   ########.fr       */
+/*   Updated: 2020/05/03 17:18:58 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,9 @@ static char	*ft_strcat(char *s1, char *s2)
 
 char		*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
 	char	*res;
 
 	res = NULL;
-	i = 0;
 	if (s1 && s2)
 	{
 		if (!(res = malloc(sizeof(char *) *
