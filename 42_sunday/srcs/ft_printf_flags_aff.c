@@ -73,7 +73,6 @@ void	ft_flags_aff3(char *arg, t_parsing *parsing, char c, char *tmp)
 
 void	ft_flags_aff_modulo(char *arg, t_parsing *parsing, char c)
 {
-	//printf("flags_aff_modulo\n");
 	(void)*arg;
 	c = ' ';
 	if (parsing->zero == 1)
@@ -86,8 +85,7 @@ void	ft_flags_aff_modulo(char *arg, t_parsing *parsing, char c)
 }
 
 void	ft_flags_aff(char *arg, t_parsing *parsing, char c, char *tmp)
-{ //printf("       neg is [%d]\n", parsing->neg);
-	c = ' ';
+{
 	tmp = ft_strdup(parsing->aff);
 	ft_flags_aff_prepa(arg, parsing, c);
 	if (*arg == 's' && parsing->prec == 0)

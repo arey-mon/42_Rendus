@@ -28,7 +28,6 @@ void	ft_pointers_prepa(char *arg, t_parsing *parsing)
 
 void	ft_pointers_neg(t_parsing *parsing)
 {
-	//printf("dealing p_neg\n");
 	char c;
 
 	c = ' ';
@@ -45,13 +44,13 @@ void	ft_pointers_neg(t_parsing *parsing)
 }
 
 void	ft_pointers_deal(char *arg, t_parsing *parsing)
-{	//printf("ft_pointers_deal, neg is [%d]\n", parsing->neg);
+{
 	(void)*arg;
 	ft_pointers_prepa(arg, parsing);
 	if (parsing->neg == 1)
 		ft_pointers_neg(parsing);
 	else if (parsing->neg == 0)
-	{ //printf("neg == 0\n");
+	{
 		while (parsing->space_flags-- > 0)
 		{
 			ft_putchar_fd(' ', 1);

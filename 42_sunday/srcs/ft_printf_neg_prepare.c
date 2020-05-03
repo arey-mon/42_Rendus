@@ -68,8 +68,8 @@ void	ft_neg_prepare3(t_parsing *parsing, int aff_count)
 			parsing->zero_flags += 1;
 		else if (parsing->prec == ft_strlen(parsing->aff) && parsing->neg2 == 1)
 			parsing->space_flags -= 1;
-		else if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero ==
-				1)
+		else if (parsing->prec < aff_count && parsing->neg == 1 && parsing->zero
+			== 1)
 			parsing->space_flags = parsing->width - ft_strlen(parsing->aff);
 	}
 	else
