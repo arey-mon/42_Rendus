@@ -6,7 +6,7 @@
 /*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
-/*   Updated: 2020/05/03 12:08:33 by apolliner        ###   ########.fr       */
+/*   Updated: 2020/05/03 17:23:37 by apolliner        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,9 @@ int		ft_get_flags(char *arg, t_parsing *parsing)
 
 int		ft_width(char *arg, va_list *av, t_parsing *parsing)
 {
- //printf(">>> entering width arg_count is [%d]\n", parsing->arg_count);
 	int i;
-	int exception;
 
 	i = 0;
-	exception = 0;
 	if (*arg && ft_is_digit(arg[i]))
 	{
 		while (ft_is_digit(arg[i]))
@@ -119,7 +116,6 @@ int		ft_width(char *arg, va_list *av, t_parsing *parsing)
 		}
 		i++;
 	}
- //printf(">>> end of width arg_count is [%d]\n", parsing->arg_count);
 	return (i);
 }
 
