@@ -1,0 +1,143 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_neg.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apreymon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 15:44:15 by apreymon          #+#    #+#             */
+/*   Updated: 2020/05/03 12:55:50 by apolliner        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+#include <unistd.h>
+#include <stdio.h>
+
+void	ft_neg_value_w2(t_parsing *parsing)
+{
+	if (parsing->zero == 1 && parsing->prec > ft_strlen(parsing->aff))
+		parsing->zero_flags += 1;
+	while ((parsing->zero_flags-- - 1) > 0)
+	{
+		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
+}
+
+void	ft_neg_value_w(t_parsing *parsing)
+{
+	parsing->space_flags = parsing->prec >= ft_strlen(parsing->aff) ?
+		parsing->width - parsing->prec : (parsing->width -
+				ft_strlen(parsing->aff) + 1);
+	if (parsing->prec < ft_strlen(parsing->aff) && parsing->prec != -1)
+		*parsing->aff = '-';
+	else if (parsing->prec == -1 && parsing->zero == 1)
+		*parsing->aff = '0';
+	else if (parsing->prec >= ft_strlen(parsing->aff))
+		*parsing->aff = '0';
+	parsing->space_flags -= 1;
+	if ((parsing->zero == 1 && parsing->prec != -1) || (parsing->zero != 1 &&
+				parsing->width > ft_strlen(parsing->aff)))
+		while (parsing->space_flags-- > 0)
+		{
+			ft_putchar_fd(' ', 1);
+			parsing->arg_count++;
+		}
+	if (*parsing->aff == '0')
+	{
+		ft_putchar_fd('-', 1);
+		parsing->arg_count++;
+	}
+	ft_neg_value_w2(parsing);
+}
+
+void	ft_neg_value_p(char *arg, t_parsing *parsing)
+{
+	if (*arg != 'u')
+	{
+		ft_putchar_fd('-', 1);
+		parsing->arg_count++;
+	}
+	while (parsing->zero_flags-- > 0)
+	{
+		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
+	if (parsing->width > ft_strlen(parsing->aff) && parsing->prec >
+			ft_strlen(parsing->aff))
+		parsing->space_flags = (parsing->width - parsing->prec - 1);
+	while (parsing->space_flags-- > 0)
+	{
+		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
+	if (parsing->width != 0)
+		parsing->zero_flags += 1;
+	while (parsing->zero_flags-- > 0)
+	{
+		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
+}
+
+void	ft_double_neg(char *arg, t_parsing *parsing)
+{ //printf("\n____ ft_double_neg _____\n");
+// 	printf("space->flags is [%d]\n", parsing->space_flags);
+//printf("P is [%d] -- stlen(aff) is [%d]\n", parsing->prec, ft_strlen(parsing->aff));
+	if (parsing->width <= ft_strlen(parsing->aff))
+		parsing->space_flags = 0;
+	if (parsing->prec >= ft_strlen(parsing->aff) && parsing->width >=
+			ft_strlen(parsing->aff))
+		parsing->space_flags -= 1;
+	if (parsing->neg2 == 0 && parsing->prec == ft_strlen(parsing->aff) && parsing->arg_pos != 1 && *arg != 'u')
+	 	parsing->space_flags -= 1;
+	if ((ft_strlen(parsing->aff) <= parsing->prec))
+	{
+		if (*arg != 'u' && parsing->arg_pos != 1)
+			ft_putchar_fd('-', 1);
+		if (parsing->width != 0)
+			parsing->arg_count += 1;
+	}
+	while (parsing->zero_flags-- > 0)
+	{
+		ft_putchar_fd('0', 1);
+		parsing->arg_count++;
+	}
+	ft_putstr_fd(parsing->aff, 1);
+	while (parsing->space_flags-- > 0)
+	{
+		ft_putchar_fd(' ', 1);
+		parsing->arg_count++;
+	}
+	parsing->arg_count += ft_strlen(parsing->aff);
+	parsing->aff = NULL;
+}
+
+void	ft_neg_value(char *arg, t_parsing *parsing)
+{ //printf("\n entering neg value with count [%d], *arg [%c]\n", parsing->arg_count, *arg);
+	int size;
+
+	(void)*arg;
+	size = parsing->prec >= parsing->width ? parsing->prec : parsing->width;
+	ft_neg_prepare(arg, parsing);
+	if (parsing->prec < size && parsing->prec == ft_strlen(parsing->aff))
+		parsing->space_flags += 1;
+	if (ft_strlen(parsing->aff) >= size)
+		parsing->space_flags = 0;
+	if (parsing->neg == 1 && *arg != '%')
+		ft_double_neg(arg, parsing);
+	else if (parsing->neg == 1 && *arg == '%')
+		ft_neg_prepare_modulo(arg, parsing);
+	else
+	{
+		if (parsing->prec >= ft_strlen(parsing->aff) || parsing->prec == -1)
+			parsing->space_flags -= 1;
+		if (parsing->width > ft_strlen(parsing->aff) &&
+				parsing->width > parsing->prec)
+			ft_neg_value_w(parsing);
+		else if (parsing->prec >= ft_strlen(parsing->aff)
+				&& parsing->width <= parsing->prec)
+			ft_neg_value_p(arg, parsing);
+	}
+}
