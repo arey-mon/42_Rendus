@@ -1,5 +1,3 @@
 #PACKAGES
-apt-get update
-apt-get upgrade -y
-apt-get install -y wget #is NOT working
-apt-get -y install nginx
+#will be used for configuration files
+echo "I did something from the ground. Well... I just went into start.sh and printed that. Isn't it amazing ?"

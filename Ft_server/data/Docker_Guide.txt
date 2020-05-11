@@ -36,6 +36,7 @@ lbastian(s’ouvre dans un nouvel onglet)  11 h 41
 docker stop $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+/usr/sbin/nginx -s reload >> reload nains and apply new changes
 
 Id Pb : 
 Docker ps to see containers // ps -a to see not running
@@ -54,3 +55,29 @@ Entrer dans le container >> docker exec -it 027 bash 		//027 being nains contain
 4. Entrer dans le container
 	docker exec -it 8f1 bash // Ctrl+D to exit
 
+#Installations
+https://www.linuxbabe.com/debian/install-lamp-stack-debian-10-buster
+
+>>> sudo mysql_secure_installation
+Enter current password for root (enter for none): Just press the Enter
+Set root password? [Y/n]: Y
+New password: Enter password
+Re-enter new password: Repeat password
+Remove anonymous users? [Y/n]: Y
+Disallow root login remotely? [Y/n]: Y
+Remove test database and access to it? [Y/n]:  Y
+Reload privilege tables now? [Y/n]:  Y
+Then restart
+
+____ Later steps
+
+Enter MySQL 
+	sudo mysql -u root -p
+	CREATE DATABASE wordpress;
+	CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'new_password_here'; // SQLpassword2020_
+	GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
+	FLUSH PRIVILEGES;
+EXIT;
+
+THEN exec -it dir && follow the steps below
+https://www.nginx.com/blog/installing-wordpress-with-nginx-unit/
