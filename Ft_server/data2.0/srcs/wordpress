@@ -1,7 +1,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name my_domain www.my_domain;
+    server_name wordpress www.wordpress;
     return 301 https://$server_name$request_uri;
 }
 
@@ -12,10 +12,10 @@ server {
     ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
     ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
 
-    server_name my_domain, www.my_domain;
+    server_name wordpress, www.wordpress;
     autoindex on;
 
-   root /var/www/my_domain;
+   root /var/www/wordpress;
    index index.php index.html index.htm index.nginx-debian.html;
 
 
