@@ -1,10 +1,3 @@
-#EXPLANATIONS
-# Copy the file from your host to your current location.
-# Run the command inside your image filesystem.
-# Inform Docker that the container is listening on the specified port at runtime.
-# Run the specified command within the container.
-# Copy the rest of your app's source code from your host to your image filesystem.
-#MORE https://docs.docker.com/get-started/part2/
 FROM debian:buster
 MAINTAINER Apolline Reymond <apreymon@student.42.fr>
 
@@ -15,8 +8,6 @@ RUN apt-get -y install nginx
 RUN apt-get -y install wget
 RUN apt-get -y install mariadb-server mariadb-client
 RUN apt-get install -y vim
-RUN apt-get -y install systemd
-RUN apt-get install sudo
 
 #PHP-SQL
 RUN apt-get -y install php php-common
@@ -41,9 +32,6 @@ RUN ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
 
 #SSL
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -subj '/C=FR/ST=75017/L=Paris/O=42/CN=wordpress'
-
-
-#CMD bash /var/stuck.sh
 
 RUN rm /var/www/wordpress/wordpress/wp-config-sample.php
 COPY /srcs/config.inc.php /var/www/wordpress/phpmyadmin
