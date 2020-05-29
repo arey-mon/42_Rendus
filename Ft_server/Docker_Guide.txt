@@ -1,0 +1,95 @@
+1. Install Docker Desktop
+2. Create Docker Hub Account
+3. Create Dockerfile with FROM <configyouwant>
+
+(Forgotten steps here ?)
+4. Create new repository on DockerHub
+5. docker create --name nginx_base -p 80:80 nginx
+6. docker tag <name_of_repo> /<user_ID>/<name_of_repo>    // don't use no <>
+7. docker push <user_ID><name_of_repo>					// don't use no <>
+
+__ when changes
+8. Docker ps
+9. Docker stop (ID)
+10. Docker build
+11. Docker run
+
+Commandes : 
+
+docker build - < Dockerfile
+$ docker images                     // To view install images
+$ docker rmi <IMAGE_NAME>           // To remove an installed image
+
+$ docker ps -a                      // To view all docker containers
+$ docker stop <CONTAINER_NAME>      // To stop a docker container
+$ docker rm <CONTAINER_NAME>        // To remove a docker container
+
+$ docker exec -it <CONTAINER_NAME> bash    // Execute into container and run bash
+$ docker start mynginx1
+
+[ Should be the two only needed
+Docker build
+Docker run
+]
+
+lbastian(s’ouvre dans un nouvel onglet)  11 h 41
+docker stop $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+/usr/sbin/nginx -s reload >> reload nains and apply new changes
+
+Id Pb : 
+Docker ps to see containers // ps -a to see not running
+pkill to remove nginx hostings
+Entrer dans le container >> docker exec -it 027 bash 		//027 being nains container ID beginning
+
+
+1. Docker build
+	docker build - < Dockerfile
+2. Docker run // creates container
+	docker run --name mynginx1 -p 80:80 -d nginx
+3. Docker ps	
+	should get image and access nginx
+4. Entrer dans le container
+	docker exec -it 8f1 bash // Ctrl+D to exit
+
+#Installations
+https://www.linuxbabe.com/debian/install-lamp-stack-debian-10-buster
+PHP : https://computingforgeeks.com/install-php-on-debian-10-buster/
+
+>>> sudo mysql_secure_installation
+Enter current password for root (enter for none): Just press the Enter
+Set root password? [Y/n]: Y
+New password: Enter password
+Re-enter new password: Repeat password
+Remove anonymous users? [Y/n]: Y
+Disallow root login remotely? [Y/n]: Y
+Remove test database and access to it? [Y/n]:  Y
+Reload privilege tables now? [Y/n]:  Y
+Then restart
+
+____ Later steps
+
+Enter MySQL 
+	sudo mysql -u root -p
+	CREATE DATABASE wordpress;
+	CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'new_password_here'; // SQLpassword2020_
+	GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
+	FLUSH PRIVILEGES;
+EXIT;
+
+THEN exec -it dir && follow the steps below
+https://www.nginx.com/blog/installing-wordpress-with-nginx-unit/
+
+SSL
+https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/
+	MP = myCA.key
+	Common Name (e.g. server FQDN or YOUR name) []:TILTER
+
+
+mymy // myblog && myblog
+apocool
+___
+User not root : 
+test
+test
