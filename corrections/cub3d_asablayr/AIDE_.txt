@@ -1,0 +1,9 @@
+Créer Map + textures (NO-SO etc ../PATH/.xpm + Sol & Plafond)+ résolution (R) écran // .cub
+Utiliser gnl pour parcourir la map
+
+make
+./Cub3d > error
+./Cub3d doesn't exist.cub > error
+./Cub3d file.wtf > error
+./Cub3d map.cub > ok
+./Cub3d map.cub --save > doit sauvegarder un screenshot en .bmp
