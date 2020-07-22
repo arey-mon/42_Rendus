@@ -3,47 +3,70 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apreymon <apreymon@student.42.fr>          +#+  +:+       +#+         #
+#    By: asablayr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/11/22 10:43:56 by apreymon          #+#    #+#              #
-#    Updated: 2020/01/17 08:57:55 by apreymon         ###   ########.fr        #
+#    Created: 2020/01/04 19:03:59 by asablayr          #+#    #+#              #
+#    Updated: 2020/03/11 14:24:26 by asablayr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MLX = -lmlx -lm -framework OpenGL -framework AppKit
-#MLX = -I /usr/include -g -L /usr/lib -lX11 -lmlx -lXext -lm -fsanitize=address
+CC = clang-9
 
-NAME = cub3D
+CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 	cub3d.c \
+HEADER = cub3d.h \
+	libft.h
 
+MLX_PATH = /usr/local/lib/
 
-SRCS_BONUS = 	bonus/engine/bonus_camera.c \
+INCL_PATH = ./include
 
+LIBFT_PATH = ./libft/
 
-OBJSRCS = $(SRCS:.c=.o)
-OBJSRCSBONUS = $(SRCS_BONUS:.c=.o)
+NAME = Cub3D
 
-$(NAME) : $(OBJSRCS) $(OBJSRCSBONUS)
-	@echo "\033[33m[Remove last version...]"
-	@rm -rf Cub3D
-	@echo "\033[33m[Libft compilation...]"
-	@$(MAKE) bonus -C ./libft
-	@echo "\033[33m[Cub3D compilation...]"
-	@gcc $(OBJSRCSBONUS) $(OBJSRCS) -I./includes -I./usr/include -Wall -Wextra -Werror $(MLX) ./libft/libft.a -o $(NAME)
-	@echo "\033[33m[Done !]"
+FILES = main \
+	get_settings \
 
-all : $(NAME)
+SRCS = $(addsuffix .c, $(FILES))
+SRCDIR = srcs/
 
-clean :
-	rm -rf $(OBJSRCS) $(OBJSRCSBONUS)
-	$(MAKE) clean -C ./libft
+#BONUS = $(addsuffix .c, $(BONUS_FILES))
+#BONUSDIR = bonus/
 
-fclean : clean
-	$(MAKE) fclean -C ./libft
-	rm -rf $(NAME)
-	rm -rf cub3d.bmp
+OBJS = $(addsuffix .o, $(FILES))
+OBJDIR = tmp/
 
-re : fclean all
+#B_OBJS = $(addsuffix .o, $(BONUS_FILES))
+#B_OBJDIR = b_objs/
 
-bonus : $(NAME)
+all: $(NAME)
+
+$(NAME) : $(addprefix $(OBJDIR), $(OBJS))
+	make -j8 -C $(LIBFT_PATH)
+	$(CC) -o $(NAME) $(addprefix $(OBJDIR), $(OBJS)) libft/libft.a -L $(MLX_PATH) -lmlx -lXext -lX11 -lbsd -g3 -fsanitize=address
+
+bonus: $(addprefix $(B_OBJDIR), $(B_OBJS))
+	make -j8 -C $(LIBFT_PATH)
+	$(CC) -o $(NAME) $(addprefix $(B_OBJDIR), $(B_OBJS)) libft/libft.a -L $(MLX_PATH) -lmlx -lXext -lX11 -lbsd -g3 -fsanitize=address
+	
+makelibft:
+		make -j8 -C $(LIBFT_PATH)
+
+$(B_OBJDIR)%.o: $(BONUSDIR)%.c
+	mkdir -p $(B_OBJDIR)
+	$(CC) $(CFLAGS) $(addprefix -I, $(INCL_PATH)) -c $^ -o $@
+
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) $(addprefix -I, $(INCL_PATH)) -c $^ -o $@
+
+clean:
+	make clean -C $(LIBFT_PATH)
+	rm -rf $(OBJDIR)
+	rm -rf $(B_OBJDIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
