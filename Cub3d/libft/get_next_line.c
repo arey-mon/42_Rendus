@@ -47,6 +47,7 @@ int                     get_next_line(int fd, char **line)
         char            *end_line;
         int                     ret;
 
+	printf("entering gnl\n");
         if (fd < 0 || !line || BUFFER_SIZE <= 0)
                 return (-1);
         if (!left)

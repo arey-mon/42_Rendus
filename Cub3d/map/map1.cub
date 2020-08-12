@@ -2,12 +2,12 @@ R 900 800
 NO ./textures/stone-3.xpm
 SO ./textures/rock3.xpm
 WE ./textures/tile.xpm
-EA ./textures/tile2.xpm
+EA ./textures/tile2.xpm 
 
 S ./textures/sprite.xpm
 
-F 0,0,0
-C 137,37,37
+F 1,2,3
+C 137,45,68
 
 
 111

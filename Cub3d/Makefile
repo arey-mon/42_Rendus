@@ -27,6 +27,8 @@ NAME = Cub3D
 
 FILES = main \
 	get_settings \
+	parse_fd \
+	image \
 
 SRCS = $(addsuffix .c, $(FILES))
 SRCDIR = srcs/
