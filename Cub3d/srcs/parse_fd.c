@@ -7,6 +7,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// 6 functions
+
+int	convert_rgb(int *rgb)
+{
+	printf(">>> CONVERT_RGB <<<\n");
+	return ((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]);
+}
+
 int     check_rgb(int *f, int *c)
 {
         if (c[0] < 0 || c[0] > 255 || c[1] < 0 || c[1] > 255 ||
@@ -43,7 +51,7 @@ int     open_fd(char *str)
 
         fd = open(str, O_RDONLY);
         ret = read(fd, &s, 10);
-        printf("ret is : %d", ret);
+        printf("ret is : %d\n", ret);
         close(fd);
         if (ret <= 0)
                 return (INV_FD);
@@ -55,11 +63,18 @@ int     parse_fd_check(t_settings *set)
 {
         if (set->res_x <= 0 || set->res_y <= 0)
                 return (INV_RES);
-      if (open_fd(set->t_n) || open_fd(set->t_e) || open_fd(set->t_w)                 || open_fd(set->t_s) || open_fd(set->t_sp))
-              return (INV_FD); 
+printf("set->t_n is : %s\n", set->t_n);
+	if (open_fd(set->t_n) || open_fd(set->t_w) || open_fd(set->t_s)                 || open_fd(set->t_sp) || open_fd(set->t_w))
+		return (INV_FD); 
         if (check_rgb(set->rgb_f, set->rgb_c))
-                return (INV_RGB);
-        return (0);
+	{
+		free(set->rgb_f);
+		free(set->rgb_c);
+		return (INV_RGB);
+	}
+	set->c_c = convert_rgb(set->rgb_c);
+	set->c_f = convert_rgb(set->rgb_f);
+	return (0); //can return to check_map
 }
 
 char    *parse_fd(t_settings *set, int fd, char *s)

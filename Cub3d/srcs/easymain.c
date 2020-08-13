@@ -476,6 +476,7 @@ int	check_fd(char *s)
 	fd = open(s, O_RDONLY);
 	ret = read(fd, &s2, 10);
 	close(fd);
+	printf("ret is %d\n", ret);
 	if (ret <= 0)
 		return (INV_FD);
 	return (0);
@@ -515,7 +516,7 @@ int	main(int ac, char **av)
 	get_settings(&g.set, open(av[1], O_RDONLY));
 	parse_fd(&g.set);
 	printf("err is = %d\n", err);
-	(err == 0) ? init_game(&g) : exit_clean(err, &g);	
+//	(err == 0) ? init_game(&g) : exit_clean(err, &g);	
 	g.set.map[(int)g.p.y][(int)g.p.x] = '0';
 	g.img.x = g.set.res_x;
         g.img.y = g.set.res_y;
