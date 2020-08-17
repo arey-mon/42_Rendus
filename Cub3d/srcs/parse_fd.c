@@ -74,7 +74,7 @@ printf("set->t_n is : %s\n", set->t_n);
 	}
 	set->c_c = convert_rgb(set->rgb_c);
 	set->c_f = convert_rgb(set->rgb_f);
-	return (0); //can return to check_map
+	return (check_map(set->map, &set->map_x, &set->map_y));
 }
 
 char    *parse_fd(t_settings *set, int fd, char *s)
