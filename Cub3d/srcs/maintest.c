@@ -54,13 +54,15 @@ void	get_c_color(t_img *i, t_game *g)
 
 void	launch_textures(t_game *g)
 {
+	// you can create tab[6] and put textures in it
 	printf("_ LAUNCH_TEXTURES _\n");
 	printf("show me g->t_n : %s t_s : %s\n", g->set.t_n, g->set.t_s);
 	printf("your x is : %d __ your y is : %d\n", g->img.x, g->img.y);
-	g->img.x = 0;
-	g->img.y = 0;
+	g->img.x = g->set.res_x;
+	g->img.y = g->set.res_y;
 	g->img.img = mlx_xpm_file_to_image(g->mlx, g->set.t_n, &g->img.x, &g->img.y);
-	g->img.tmp = mlx_new_image(g->mlx, g->img.x, g->img.y);
+	g->img.tmp = mlx_new_image(g->mlx, g->set.res_x, g->set.res_y);
+	mlx_put_image_to_window(g->mlx, g->win, g->img.img, 0, 0);
 	printf("your x is : %d __ your y is : %d\n", g->img.x, g->img.y);
 	printf("value of img is : %s\n", g->img.img);
 }
