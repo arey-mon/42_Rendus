@@ -23,84 +23,104 @@ void    set_res(t_game *g, int x, int y)
         printf("x was : %d __ res_x is : %d\ny was : %d __ res_y is : %d\n", x, g->set.res_x, y, g->set.res_y);
 }
 
-void	my_mlx_pixel_put(t_img *i, int x, int y, int color)
+void	txt_in_tab(t_game *g)
 {
-	char    *dst;
-
-	dst = i->addr + (y * i->size_l + x * (i->bpp / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	get_c_color(t_img *i, t_game *g)
-{
-        while (i->x < g->set.res_x)
-        {
-                my_mlx_pixel_put(i, i->x, i->y, g->set.c_c);
-                mlx_put_image_to_window(g->mlx, g->win, g->img.img, 0, 0);
-                i->x++;
-        }
-        i->x = 0;
-        printf("i->y is : %d\n", i->y);
-	while (i->y < g->set.res_y)
-        {
-		if (i->y >= (g->set.res_y / 2))
-			my_mlx_pixel_put(i, i->x, i->y, g->set.c_f);
-		else
-			my_mlx_pixel_put(i, i->x, i->y, g->set.c_c);
-		mlx_put_image_to_window(g->mlx, g->win, g->img.img, i->x, i->y);
-                i->y++;
-        }
+	g->txt[0] = g->set.t_n;
+	g->txt[1] = g->set.t_e;
+	g->txt[2] = g->set.t_s;
+	g->txt[3] = g->set.t_w;
+	g->txt[4] = g->set.t_sp;
+	g->txt[5] = "\0";
 }
 
 void	launch_textures(t_game *g)
 {
-	// you can create tab[6] and put textures in it
 	printf("_ LAUNCH_TEXTURES _\n");
-	printf("show me g->t_n : %s t_s : %s\n", g->set.t_n, g->set.t_s);
 	printf("your x is : %d __ your y is : %d\n", g->img.x, g->img.y);
-	g->img.x = g->set.res_x;
-	g->img.y = g->set.res_y;
+	txt_in_tab(g);
 	g->img.img = mlx_xpm_file_to_image(g->mlx, g->set.t_n, &g->img.x, &g->img.y);
-	g->img.tmp = mlx_new_image(g->mlx, g->set.res_x, g->set.res_y);
+	/*
+	int	i = 0;
+	while (g->txt[i] != '\0')
+	{
+		g->img.img = mlx_xpm_file_to_image(g->mlx, g->txt[i], &g->img.x, &g->img.y);
+	i++;
+	}
+	*/
 	mlx_put_image_to_window(g->mlx, g->win, g->img.img, 0, 0);
-	printf("your x is : %d __ your y is : %d\n", g->img.x, g->img.y);
 	printf("value of img is : %s\n", g->img.img);
+}
+
+void	create_image(t_game *g)
+{
+	printf("___ CREATE_IMAGE ___\n");
+	mlx_put_image_to_window(g->mlx, g->win, g->img.img, 0, 0);
+}
+
+void	raycast(t_game *g)
+{
+	int	x;
+
+	x = 0;
+	printf("what is g.p.fov entering raycast : %f\n", g->p.fov);
+	while (x < g->set.res_x)
+	{
+	//	get_c_color(&g->img, g);
+	}
+}
+
+int	launch_game(t_game *g)
+{
+	printf("___ LAUNCH_GAME ___\n");
+	
+	// KEYS AIN'T RECEIVED HERE
+	if (g->press.quit == 1)
+		exit_clean(0, g);
+	else
+	{
+		//init_moves
+		raycast(g);
+		launch_image(&g->img, g);
+	}
+	return (0);	
+}
+
+void	set_loop(t_game *g, t_img *i)
+{
+
+	printf("___ SET_LOOP ___\n");
+	mlx_hook(g->win, KeyPress, KeyPressMask, &key_press, &g->press);
+	mlx_hook(g->win, KeyRelease, KeyReleaseMask, &key_release, &g->press);
+	mlx_hook(g->win, KeyPress, KeyPressMask, &close_window, &(g->img));
+	// with loop_hook, keys are not responding
+	mlx_loop_hook(g->mlx, &launch_game, g);
+	mlx_loop(g->mlx);
 }
 
 void	launch_image(t_img *i, t_game *g)
 {
 	printf("_ LAUNCH_IMAGE _\n");
-	//get_c_color(i, g);
-	launch_player(g);
-	launch_textures(g);	
-}
-
-void	set_loop(t_game *g, t_img *i)
-{
-	printf("___ SET_LOOP ___\n");
-	init_touches(g);
-	mlx_hook(g->win, KeyPress, KeyPressMask, &key_press, g);
-	mlx_hook(g->win, KeyRelease, KeyReleaseMask, &key_release, g);
-	mlx_hook(g->win, KeyPress, KeyPressMask, &close_window, &(g->img));
-	launch_image(i, g);
-	mlx_loop(g->mlx);
-}
-
-void	set_game(t_game *g)
-{
-	// to see better
-	g->set.res_x /= 2;
-	g->set.res_y /= 2;
-	
-	printf("_ SET GAME _\n");
 	g->mlx = mlx_init();
 	set_res(g, g->set.res_x, g->set.res_y);
 	g->win = mlx_new_window(g->mlx, g->set.res_x, g->set.res_y, "CUB3D");
 	g->img.img = mlx_new_image(g->mlx, g->set.res_x, g->set.res_y);
 	g->img.addr = mlx_get_data_addr(g->img.img, &g->img.bpp, &g->img.size_l, &g->img.endian);
-	g->img.size_l /= 4; 
-	// allow to set byte line per line instead of in cross
+	get_c_color(i, g); // to be put later in raycasting
+	//g->img.size_l /= 4; 
 	set_loop(g, &g->img);
+}
+
+void	set_game(t_game *g)
+{
+	// to see better
+	//g->set.res_x /= 2;
+	//g->set.res_y /= 2;
+	
+	printf("_ SET GAME _\n");
+	init_touches(g);
+	launch_player(g);
+	launch_image(&g->img, g);
+	//launch_textures(g);	
 }
 
 int	main(int ac, char **av)

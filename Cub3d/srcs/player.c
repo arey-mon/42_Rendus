@@ -2,6 +2,7 @@
 #include "../include/cub3d.h"
 #include "mlx.h"
 #include <stdio.h>
+#include <math.h>
 
 int	player_pos(char **map, int *x, int *y)
 {
@@ -28,7 +29,8 @@ int	player_pos(char **map, int *x, int *y)
 void	player_starting_dir(t_game *g, int x, int y)
 {
 	// it will be used to know player starting direction
-	my_mlx_pixel_put(&g->img, x, y, g->set.c_c);
+	// have to change int color for it to be seen
+	// my_mlx_pixel_put(&g->img, x, y, g->set.c_c);
 	mlx_put_image_to_window(g->mlx, g->win, g->img.img, x, y);
 
 }
@@ -45,6 +47,7 @@ void	launch_player(t_game *g)
 		exit_clean(6, g);
 	g->p.x = x;	
 	g->p.y = y;
+	g->p.fov = M_PI / 3;
 	g->p.nesw = g->set.map[x][y]; // is getting first direction from map
 	printf("your nesw is : %c\n", g->p.nesw);
 	//player_starting_dir(g, &x, &y);

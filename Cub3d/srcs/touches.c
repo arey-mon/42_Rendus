@@ -4,8 +4,6 @@
 #include <stdio.h>
 
 // 3 Functions
-//
-// For now, keys ain't recognized when pressed
 
 void    init_touches(t_game *g)
 {
@@ -13,6 +11,7 @@ void    init_touches(t_game *g)
         g->press.r = 0;
         g->press.f = 0;
         g->press.b = 0;
+        g->press.quit = 0;
 }
 
 int     key_release(t_game *g)
@@ -33,7 +32,7 @@ int     key_release(t_game *g)
         return (0);
 }
 
-int     key_press(t_game *g) 
+int     key_press(t_press *press) 
 {
         printf("___ KEY_PRESS ___\n");
         int	key;
@@ -42,19 +41,19 @@ int     key_press(t_game *g)
         if (key == MV_F)
         {   
                 printf("MV_F key has been touched, gross ! \n");
-                g->press.f = 1;
+                press->f = 1;
         }   
         if (key == MV_B)
-                g->press.b = 1;
+                press->b = 1;
         if (key == MV_L)
-                g->press.l = 1;
+                press->l = 1;
         if (key == MV_R)
-                g->press.r = 1;
+                press->r = 1;
         //looking left, right etc will happen here also
 	if (key == ESC)
 	{
-		printf("pressing ESC\n");
-		exit_clean(err, g);
+		press->quit = 1;
+	//	exit_clean(err, g);
 	}
 	return (0);
 }
