@@ -23,6 +23,7 @@ void    set_res(t_game *g, int x, int y)
         printf("x was : %d __ res_x is : %d\ny was : %d __ res_y is : %d\n", x, g->set.res_x, y, g->set.res_y);
 }
 
+/*
 void	txt_in_tab(t_game *g)
 {
 	g->txt[0] = g->set.t_n;
@@ -31,23 +32,30 @@ void	txt_in_tab(t_game *g)
 	g->txt[3] = g->set.t_w;
 	g->txt[4] = g->set.t_sp;
 	g->txt[5] = "\0";
+	printf(">>> out of txt_in_tab\n");
+}
+*/
+
+void            load_txt(t_img *i, t_game g, char *path)
+{
+	char	*tmp_addr;
+
+        i->tmp = mlx_xpm_file_to_image(g.mlx, path, &i->x, &i->y);
+        tmp_addr = mlx_get_data_addr(i->tmp, &i->bpp, &i->size_l, &i->endian);
+        i->addr = tmp_addr;
+        i->size_l /= 4;
 }
 
 void	launch_textures(t_game *g)
 {
 	printf("_ LAUNCH_TEXTURES _\n");
-	printf("your x is : %d __ your y is : %d\n", g->img.x, g->img.y);
-	txt_in_tab(g);
-	g->img.img = mlx_xpm_file_to_image(g->mlx, g->set.t_n, &g->img.x, &g->img.y);
-	/*
-	int	i = 0;
-	while (g->txt[i] != '\0')
-	{
-		g->img.img = mlx_xpm_file_to_image(g->mlx, g->txt[i], &g->img.x, &g->img.y);
-	i++;
-	}
-	*/
-	mlx_put_image_to_window(g->mlx, g->win, g->img.img, 0, 0);
+	//txt_in_tab(g);
+	load_txt(&(g->txt[0]), *g, g->set.t_n);
+        load_txt(&(g->txt[1]), *g, g->set.t_e);
+        load_txt(&(g->txt[2]), *g, g->set.t_s);
+        load_txt(&(g->txt[3]), *g, g->set.t_w);
+        load_txt(&(g->txt[4]), *g, g->set.t_sp);
+	
 	printf("value of img is : %s\n", g->img.img);
 }
 
@@ -62,25 +70,31 @@ void	raycast(t_game *g)
 	int	x;
 
 	x = 0;
-	printf("what is g.p.fov entering raycast : %f\n", g->p.fov);
 	while (x < g->set.res_x)
 	{
 	//	get_c_color(&g->img, g);
+		printf("we're all good\n");
 	}
 }
 
-int	launch_game(t_game *g)
+int	launch_game(int key, t_game *g)
 {
-	printf("___ LAUNCH_GAME ___\n");
-	
-	// KEYS AIN'T RECEIVED HERE
-	if (g->press.quit == 1)
+	//printf("___ LAUNCH_GAME ___\n");
+	if (key == ESC)
 		exit_clean(0, g);
-	else
+	// this printf alone creates a segfault
+	//printf("do you receive g->press : %d\n", g->press.quit);
+	/*	
+	if (g->press.quit != 0)
+	{
+		printf("press.quit is == 1, we quit\n");
+		exit_clean(0, g);
+	}
+	else */
 	{
 		//init_moves
-		raycast(g);
-		launch_image(&g->img, g);
+//		raycast(g);
+	//	create_image(g);
 	}
 	return (0);	
 }
@@ -91,8 +105,7 @@ void	set_loop(t_game *g, t_img *i)
 	printf("___ SET_LOOP ___\n");
 	mlx_hook(g->win, KeyPress, KeyPressMask, &key_press, &g->press);
 	mlx_hook(g->win, KeyRelease, KeyReleaseMask, &key_release, &g->press);
-	mlx_hook(g->win, KeyPress, KeyPressMask, &close_window, &(g->img));
-	// with loop_hook, keys are not responding
+	mlx_hook(g->win, 17, 0, &close_window, &g->press);
 	mlx_loop_hook(g->mlx, &launch_game, g);
 	mlx_loop(g->mlx);
 }
@@ -120,7 +133,7 @@ void	set_game(t_game *g)
 	init_touches(g);
 	launch_player(g);
 	launch_image(&g->img, g);
-	//launch_textures(g);	
+	launch_textures(g);	
 }
 
 int	main(int ac, char **av)

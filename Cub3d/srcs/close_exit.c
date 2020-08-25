@@ -3,22 +3,20 @@
 #include <mlx.h>
 #include <stdio.h>
 
-int     close_window(int key, t_game *g)
+int     close_window(int key, t_game g)
 {
-        int err;
-
-        err = key;
         printf("__ CLOSE_WINDOW __\n");
-	printf("value of press->quit is :%d\n", g->press.quit);
+	printf("value of press.quit is :%d\n", g.press.quit);
 	if (key == ESC)
         {
-		// not a structure or pointer union, syntax or recode...?
-		//mlx_destroy_image(g->mlx, (*g).txt[0].tmp);
+		printf("you touched ESCAPE\n");
+	// not a structure or pointer union, syntax or recode...?
+	//mlx_destroy_image(g->mlx, (*g).txt[0].tmp);
 	 // mlx_destroy_image(g->mlx, g->img.tmp);
 	 // mlx_destroy_window(g->mlx, g->win);
          // closes the window but actually creates a segfault
 	 // tried to put it in exit_clean but same pb
-		exit_clean(0, g);
+		exit_clean(0, &g);
         }
         return (0);
 }

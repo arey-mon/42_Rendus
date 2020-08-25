@@ -3,16 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// 6 FONCTIONS
-
-void    get_rgb_malloc(t_settings *set)
-{
-        printf("___ INIT_RGB ___\n");
-        if (!(set->rgb_f = (int*)malloc(sizeof(int) * 3)))
-                return ;
-        if (!(set->rgb_c = (int*)malloc(sizeof(int) * 3)))
-                return ;
-}
+// 4 FONCTIONS
 
 char    *get_texture(char *s)
 {
@@ -20,24 +11,6 @@ char    *get_texture(char *s)
                 s++;
         printf("texture is : %s\n", ft_strdup(s));
         return (ft_strdup(s));
-}
-
-void    get_fc_color(int *rgb, char *s)
-{
-        printf("___ GET_FC_COLOR\n");
-        int i;
-
-        i = 0;
-        rgb[i] = ft_atoi(++s);
-        i += 1;
-        while (*s != ',')
-                s++;
-        rgb[i] = ft_atoi(++s);
-        i += 1;
-        while (*s != ',')
-                s++;
-        rgb[i] = ft_atoi(++s);
-        printf("results are rgb[0] == %d _ rgb[0] == %d _ rgb[0] == %d\n", rgb[0], rgb[1], rgb[2]);
 }
 
 void    get_res(int *res_x, int *res_y, char *s)

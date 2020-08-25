@@ -51,11 +51,10 @@ int     open_fd(char *str)
 
         fd = open(str, O_RDONLY);
         ret = read(fd, &s, 10);
-        printf("ret is : %d\n", ret);
         close(fd);
         if (ret <= 0)
                 return (INV_FD);
-        printf("all went well\n");
+        printf("ret is : %d, all went well\n", ret);
         return (0);
 }
 

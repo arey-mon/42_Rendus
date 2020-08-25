@@ -14,11 +14,8 @@ void    init_touches(t_game *g)
         g->press.quit = 0;
 }
 
-int     key_release(t_game *g)
+int     key_release(int key, t_game *g)
 {
-        printf("___ KEY_RELEASE ___\n");
-        int key;
-
         if (key == MV_F)
                 g->press.f = 0;
         if (key == MV_B)
@@ -28,23 +25,19 @@ int     key_release(t_game *g)
         if (key == MV_R)
                 g->press.l = 0;
         //looking left, right etc will happen here also
-        //ESC key might also be here
         return (0);
 }
 
-int     key_press(t_press *press) 
+int     key_press(int key, t_press *press) 
 {
-        printf("___ KEY_PRESS ___\n");
-        int	key;
+        printf("___ KEY_PRESS ___");
+	printf(" you're touching this key : %d\n", key);
 	int	err;
 
         if (key == MV_F)
-        {   
-                printf("MV_F key has been touched, gross ! \n");
                 press->f = 1;
-        }   
         if (key == MV_B)
-                press->b = 1;
+       		press->b = 1;
         if (key == MV_L)
                 press->l = 1;
         if (key == MV_R)
@@ -53,7 +46,7 @@ int     key_press(t_press *press)
 	if (key == ESC)
 	{
 		press->quit = 1;
-	//	exit_clean(err, g);
+		printf("you pressed ESC, press->quit is : %d\n", press->quit);
 	}
 	return (0);
 }

@@ -39,7 +39,6 @@ void	get_c_color(t_img *i, t_game *g)
 		mlx_put_image_to_window(g->mlx, g->win, g->img.img, i->x, i->y);
 		i->y++;
 	}
-	printf("show c_c value : %d __ and c_f : %d\n", g->set.c_c, g->set.c_f);
 	printf("ending c_color with y : %d\n", i->y);
 	while (i->y < g->set.res_y)
 	{
@@ -55,4 +54,31 @@ void	get_c_color(t_img *i, t_game *g)
                 i->x++;
         }
 	printf(">>>\n");
+}
+
+void    get_rgb_malloc(t_settings *set)
+{
+        printf("___ INIT_RGB ___\n");
+        if (!(set->rgb_f = (int*)malloc(sizeof(int) * 3)))
+                return ;
+        if (!(set->rgb_c = (int*)malloc(sizeof(int) * 3)))
+                return ;
+}
+
+void    get_fc_color(int *rgb, char *s)
+{
+        printf("___ GET_FC_COLOR\n");
+        int i;
+
+        i = 0;
+        rgb[i] = ft_atoi(++s);
+        i += 1;
+        while (*s != ',')
+                s++;
+        rgb[i] = ft_atoi(++s);
+        i += 1;
+        while (*s != ',')
+                s++;
+        rgb[i] = ft_atoi(++s);
+        printf("results are rgb[0] == %d _ rgb[0] == %d _ rgb[0] == %d\n", rgb[0], rgb[1], rgb[2]);
 }
