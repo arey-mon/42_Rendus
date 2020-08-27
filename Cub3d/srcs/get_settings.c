@@ -2,15 +2,29 @@
 #include "../include/cub3d.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <mlx.h>
 
-// 4 FONCTIONS
+// 5 FONCTIONS
 
 char    *get_texture(char *s)
 {
         while (*s == ' ')
                 s++;
-        printf("texture is : %s\n", ft_strdup(s));
         return (ft_strdup(s));
+}
+
+void    set_res(t_game *g, int x, int y)
+{
+        int a;
+        int z;
+
+        printf("_ SET RES _\n");
+        mlx_get_screen_size(g->mlx, &a, &z);
+        if (g->set.res_x > a)
+                g->set.res_x = a;
+        if (g->set.res_y > z)
+                g->set.res_y = z;
+        printf("x was : %d __ res_x is : %d\ny was : %d __ res_y is : %d\n", x, g->set.res_x, y, g->set.res_y);
 }
 
 void    get_res(int *res_x, int *res_y, char *s)
@@ -21,7 +35,6 @@ void    get_res(int *res_x, int *res_y, char *s)
         while (ft_isdigit((int)*s))
                 s++;
         *res_y = ft_atoi(s);
-        printf("outta get_res, results are res_x : %d, res_y : %d\n", *res_x, *res_y);
 }
 
 void	get_map(t_settings *set, int fd, char *s)
@@ -55,4 +68,3 @@ int     get_settings(t_settings *set, int fd)
 	close(fd);
         return (0);
 }
-

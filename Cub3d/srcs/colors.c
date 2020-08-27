@@ -22,7 +22,6 @@ void	my_mlx_pixel_put(t_img *i, int x, int y, int color)
 void	get_c_color(t_img *i, t_game *g)
 {
 	printf("_ GET_C_COLOR _\n");
-	printf("i->x is : %d __ i->y is : %d\n", i->x, i->y);
 	// first line of pixels seems to be c_f which is not normal
 	i->x = 0;
 	i->y = 0;

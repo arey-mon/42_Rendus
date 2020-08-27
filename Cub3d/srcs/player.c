@@ -26,13 +26,21 @@ int	player_pos(char **map, int *x, int *y)
 	return (1);
 }
 
-void	player_starting_dir(t_game *g, int x, int y)
+int	player_starting_dir(char c)
 {
-	// it will be used to know player starting direction
-	// have to change int color for it to be seen
-	// my_mlx_pixel_put(&g->img, x, y, g->set.c_c);
-	mlx_put_image_to_window(g->mlx, g->win, g->img.img, x, y);
+	printf("__ PLAYERS_STARTING_DIR __\n");
+        double  dir;
 
+        if (c == 'N')
+                dir = 3 * M_PI_2;
+        else if (c == 'E')
+                dir = 0;
+        else if (c == 'S')
+                dir = M_PI_2;
+        else
+                dir = M_PI;
+	printf("your player dir is : %c, meaning you go to dir : %f\n", c, dir);
+	return (dir);	
 }
 
 void	launch_player(t_game *g)
@@ -49,6 +57,6 @@ void	launch_player(t_game *g)
 	g->p.y = y;
 	g->p.fov = M_PI / 3;
 	g->p.nesw = g->set.map[x][y]; // is getting first direction from map
-	printf("your nesw is : %c\n", g->p.nesw);
-	//player_starting_dir(g, &x, &y);
+	g->p.dir = player_starting_dir(g->p.nesw);
+	g->set.map[x][y] = '0';
 }

@@ -5,6 +5,25 @@
 
 // 3 Functions
 
+int	init_moves(t_press press, t_game *g)
+{
+	printf("___ INIT_MOVES ___\n");
+	if (press.f)
+	{
+		press.f = 1;
+		printf("entered press.f\n");
+	}	// has to be coded move_f(&g->p, g);	
+	if (press.l)
+		press.l = 1;
+	if (press.r)
+		press.r = 1;
+	if (press.b)
+		press.b = 1;
+	if (press.quit)
+		exit_clean(0, g);
+	return (0);
+}
+
 void    init_touches(t_game *g)
 {
         g->press.l = 0;

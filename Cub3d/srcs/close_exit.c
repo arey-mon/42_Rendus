@@ -6,9 +6,10 @@
 int     close_window(int key, t_game g)
 {
         printf("__ CLOSE_WINDOW __\n");
-	printf("value of press.quit is :%d\n", g.press.quit);
+	printf("value of press.quit is :%c\n", g.press.quit);
 	if (key == ESC)
         {
+		g.press.quit = '1';
 		printf("you touched ESCAPE\n");
 	// not a structure or pointer union, syntax or recode...?
 	//mlx_destroy_image(g->mlx, (*g).txt[0].tmp);
