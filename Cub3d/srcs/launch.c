@@ -16,7 +16,7 @@ int	launch_game(t_game *g)
 {
 	init_moves(g->press, g);
 	raycast(g);		
-	create_image(g);
+	//	create_image(g);
 	g->buf = (float *)malloc(sizeof(float) * g->set.res_x);
         g->dist = (g->set.res_x / 2) / tan(g->p.fov / 2);
 	return (0);	

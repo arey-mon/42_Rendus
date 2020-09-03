@@ -29,7 +29,8 @@ int     exit_clean(int err, t_game *g)
 
 	i = 0;
         printf("___ EXIT_CLEAN ___\n");
-        ft_putstr_fd("Error\n", 1);
+        if (err > 0)
+		ft_putstr_fd("Error\n", 1);
         msg = err_msg();
         ft_putstr_fd(msg[err], 1);
         free(msg);

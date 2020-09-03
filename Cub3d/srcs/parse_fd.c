@@ -53,8 +53,11 @@ int     open_fd(char *str)
         ret = read(fd, &s, 10);
         close(fd);
         if (ret <= 0)
+	{
+        printf("ERROR with file %s\n", str);
                 return (INV_FD);
-        printf("ret is : %d, all went well\n", ret);
+	}
+	printf("ret is : %d, all went well with file %s\n", ret, str);
         return (0);
 }
 
@@ -63,7 +66,10 @@ int     parse_fd_check(t_settings *set)
         if (set->res_x <= 0 || set->res_y <= 0)
                 return (INV_RES);
 printf("set->t_n is : %s\n", set->t_n);
-	if (open_fd(set->t_n) || open_fd(set->t_w) || open_fd(set->t_s)                 || open_fd(set->t_sp) || open_fd(set->t_w))
+printf("set->t_w is : %s\n", set->t_w);
+printf("set->t_e is : %s\n", set->t_e);
+printf("set->t_s is : %s\n", set->t_s);
+	if (open_fd(set->t_n) || open_fd(set->t_e) || open_fd(set->t_s)                 || open_fd(set->t_w) || open_fd(set->t_sp))
 		return (INV_FD); 
         if (check_rgb(set->rgb_f, set->rgb_c))
 	{
