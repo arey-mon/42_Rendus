@@ -1,6 +1,0 @@
-clang-9 easymain.c -L . -lmlx -lXext -lX11 && ./a.out
-keyboard hooks plus simple à utiliser que la fonction de mlx
-
-attention : 
-printf ajouté à gnl
-
